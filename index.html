@@ -1103,88 +1103,84 @@
         </div>
         
         <!-- Contact Section Form -->
+<!-- Contact Us Form (Compact Version) -->
 <form 
     action="https://api.web3forms.com/submit" 
     method="POST" 
-    id="contact-form">
+    id="contact-form"
+    style="max-width: 500px; margin: 40px auto;">
 
-    <!-- Web3Forms Required Fields -->
+    <!-- Web3Forms Setup -->
     <input type="hidden" name="access_key" value="a64e9d8d-35bd-429c-817b-a7ddc063095c">
-    <input type="hidden" name="subject" value="New Contact Inquiry from Website - ICT Integrated Hub">
-    <input type="hidden" name="from_name" value="ICT Hub Contact Form">
+    <input type="hidden" name="subject" value="New Contact Message - ICT Integrated Hub">
+    <input type="hidden" name="from_name" value="ICT Hub Contact">
 
-    <!-- Service Selection -->
-    <select name="service" required style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem;">
-        <option value="">Select Service</option>
-        <option value="JAMB">JAMB</option>
-        <option value="Post UTME">Post UTME</option>
-        <option value="Change of Course">Change of Course</option>
-        <option value="WAEC & NECO">WAEC & NECO</option>
-        <option value="NOUN">NOUN</option>
-        <option value="NIN Slips">NIN Slips</option>
-        <option value="National ID">National ID</option>
-        <option value="Personal Card">Personal Card</option>
-        <option value="BVN Printout">BVN Printout</option>
-        <option value="NIN Validations">NIN Validations</option>
-        <option value="Systems Setup">Systems Setup</option>
-        <option value="Network Topology">Network Topology</option>
-        <option value="Career Choice">Career Choice</option>
-        <option value="Tech Solutions">Tech Solutions</option>
-        <option value="Project Branding">Project Branding</option>
-        <option value="Company Branding">Company Branding</option>
-        <option value="e-Flyers">e-Flyers</option>
-        <option value="Web Development">Web Development</option>
-        <option value="Data Analysis">Data Analysis</option>
-    </select>
+    <!-- Service -->
+    <div style="margin-bottom: 18px;">
+        <select 
+            name="service" 
+            required 
+            style="width: 100%; padding: 14px 16px; background: #1a1a1a; border: 1px solid #444; border-radius: 12px; color: #fff; font-size: 1rem; appearance: none;">
+            <option value="">Select Service</option>
+            <option value="JAMB">JAMB</option>
+            <option value="Post UTME">Post UTME</option>
+            <option value="Change of Course">Change of Course</option>
+            <option value="WAEC & NECO">WAEC & NECO</option>
+            <option value="NOUN">NOUN</option>
+            <option value="NIN Slips">NIN Slips</option>
+            <option value="National ID">National ID</option>
+            <option value="Personal Card">Personal Card</option>
+            <option value="BVN Printout">BVN Printout</option>
+            <option value="NIN Validations">NIN Validations</option>
+            <option value="Systems Setup">Systems Setup</option>
+            <option value="Network Topology">Network Topology</option>
+            <option value="Career Choice">Career Choice</option>
+            <option value="Tech Solutions">Tech Solutions</option>
+            <option value="Project Branding">Project Branding</option>
+            <option value="Company Branding">Company Branding</option>
+            <option value="e-Flyers">e-Flyers</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Data Analysis">Data Analysis</option>
+        </select>
+    </div>
 
     <!-- Name -->
-    <input 
-        type="text" 
-        name="name" 
-        placeholder="Name" 
-        required 
-        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem;"
-        onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'">
+    <div style="margin-bottom: 18px;">
+        <input 
+            type="text" 
+            name="name" 
+            placeholder="Name" 
+            required 
+            style="width: 100%; padding: 14px 16px; background: #1a1a1a; border: 1px solid #444; border-radius: 12px; color: #fff; font-size: 1rem;">
+    </div>
 
     <!-- Email -->
-    <input 
-        type="email" 
-        name="email" 
-        placeholder="Email" 
-        required 
-        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem;"
-        onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'">
+    <div style="margin-bottom: 18px;">
+        <input 
+            type="email" 
+            name="email" 
+            placeholder="Email" 
+            required 
+            style="width: 100%; padding: 14px 16px; background: #1a1a1a; border: 1px solid #444; border-radius: 12px; color: #fff; font-size: 1rem;">
+    </div>
 
     <!-- Phone -->
-    <input 
-        type="tel" 
-        name="phone" 
-        placeholder="Phone" 
-        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem;"
-        onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'">
-
-    <!-- Message -->
-    <textarea 
-        name="message" 
-        placeholder="Message" 
-        required 
-        rows="5" 
-        style="width: 100%; padding: 15px; margin-bottom: 20px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem; resize: vertical;"
-        onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'"></textarea>
+    <div style="margin-bottom: 24px;">
+        <input 
+            type="tel" 
+            name="phone" 
+            placeholder="Phone Number" 
+            style="width: 100%; padding: 14px 16px; background: #1a1a1a; border: 1px solid #444; border-radius: 12px; color: #fff; font-size: 1rem;">
+    </div>
 
     <!-- Submit Button -->
     <button 
         type="submit" 
-        class="btn-primary" 
-        style="width: 100%; padding: 15px; font-size: 1.1rem; font-weight: 600;">
-        Submit
+        style="width: 100%; padding: 16px; background: #d4af37; color: #1a1a1a; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+        Send Message
     </button>
 
-    <!-- Success/Error Message -->
+    <!-- Status Message -->
     <p id="contact-message" style="margin-top: 20px; text-align: center; font-weight: bold;"></p>
 </form>
         <p id="contact-message"></p>
