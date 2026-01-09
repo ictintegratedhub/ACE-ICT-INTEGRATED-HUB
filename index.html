@@ -843,7 +843,38 @@
         required 
         style="width: 100%; padding: 15px; margin-bottom: 15px; background: #2c1e0f; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem;"
         onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'">->
+        onblur="this.style.borderColor='#444'">
+       
+    <!-- Phone -->
+    <input 
+        type="tel" 
+        name="phone" 
+        placeholder="+234 xxx xxx xxxx" 
+        required 
+        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff;">
+
+    <!-- Position -->
+    <select 
+        name="position" 
+        required 
+        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff;">
+        <option value="" disabled selected>Select a position</option>
+        <option value="ICT Consultant">ICT Consultant</option>
+        <option value="Graphics/Branding Specialist">Graphics/Branding Specialist</option>
+        <option value="Web Developer">Web Developer</option>
+        <option value="Customer Support">Customer Support</option>
+        <option value="Admin/Operations">Admin/Operations</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <!-- Brief Bio -->
+    <textarea 
+        name="bio" 
+        placeholder="Tell us about your skills and experience..." 
+        required 
+        rows="5" 
+        style="width: 100%; padding: 15px; margin-bottom: 15px; background: #1a1a1a; border: 1px solid #444; border-radius: 10px; color: #fff; resize: vertical;"></textarea>
+    
 
     <!-- File Upload Field -->
     <div style="margin-bottom: 20px;">
