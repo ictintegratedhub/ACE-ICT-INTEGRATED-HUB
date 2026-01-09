@@ -824,17 +824,33 @@
                     <h3 style="margin: 0; font-size: 1.4rem;">Submit Your Application</h3>
                 </div>
 
-               <form 
-        action="https://api.web3forms.com/submit" 
-        method="POST" 
-        id="careers-form"
-        enctype="multipart/form-data">
-        
-        <input type="hidden" name="access_key" value="a64e9d8d-35bd-429c-817b-a7ddc063095c">
-        <!-- ... all other careers fields ... -->
-        <input type="file" name="cv" id="cv-upload" accept=".pdf,.doc,.docx" style="display:none;">
-        <!-- ... submit button ... -->
-    </form>
+              <form 
+    action="https://api.web3forms.com/submit" 
+    method="POST" 
+    id="careers-form"
+    enctype="multipart/form-data">
+    
+    <input type="hidden" name="access_key" value="a64e9d8d-35bd-429c-817b-a7ddc063095c">
+    <input type="hidden" name="subject" value="New Career Application - ICT Integrated Hub">
+    <input type="hidden" name="from_name" value="ICT Hub Careers">
+
+    <!-- Your other fields (name, email, phone, position, bio, etc.) -->
+
+    <!-- File Upload Field -->
+    <div style="margin-bottom: 20px;">
+        <label for="cv-upload" style="display: block; padding: 15px; background: #1a1a1a; border: 1px dashed #666; border-radius: 10px; text-align: center; color: #aaa; cursor: pointer;">
+            <i class="fas fa-cloud-upload-alt" style="margin-right: 8px;"></i>
+            Upload CV/Resume (PDF or DOC) • <span id="file-name">No file chosen</span>
+        </label>
+        <input type="file" name="cv" id="cv-upload" accept=".pdf,.doc,.docx" required style="display: none;">
+    </div>
+
+    <button type="submit" class="btn-primary" style="width: 100%; ...">
+        Submit Application
+    </button>
+
+    <p id="careers-message" style="margin-top: 15px; color: #d4af37; text-align: center;"></p>
+</form>
                 <p id="careers-message" style="margin-top: 15px; color: #d4af37; text-align: center;"></p>
             </div>
 
@@ -1004,14 +1020,6 @@
         onfocus="this.style.borderColor='#d4af37'"
         onblur="this.style.borderColor='#444'">
 
-    <textarea 
-        name="message" 
-        placeholder="Your Message..." 
-        rows="6" 
-        required 
-        style="width: 100%; padding: 15px; margin-bottom: 20px; background: #2c1e0f; border: 1px solid #444; border-radius: 10px; color: #fff; font-size: 1rem; resize: vertical;"
-        onfocus="this.style.borderColor='#d4af37'"
-        onblur="this.style.borderColor='#444'"></textarea>
 
     <!-- Submit Button -->
     <button 
