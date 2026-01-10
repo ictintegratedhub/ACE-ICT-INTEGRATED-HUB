@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Samples | ICT Integrated Hub</title>
+    <!-- Link to your main CSS if separate, or embed styles here -->
+    <style>
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #2c1e0f;
+            --gold-accent: #d4af37;
+        }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--primary-dark); color: #fff; }
+        h1, h2 { font-family: 'Poppins', sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        .section { margin-bottom: 60px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .sample-card { background: var(--secondary-dark); border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .sample-card img, .sample-card iframe { width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px; }
+        .sample-card a { color: var(--gold-accent); text-decoration: none; }
+        /* Add back to home link */
+        .back-link { display: block; text-align: center; margin: 20px 0; color: var(--gold-accent); font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: var(--gold-accent);">Service Samples</h1>
+        <p style="text-align: center; color: #ccc; margin-bottom: 50px;">Explore real examples of our work in Education, Identity, Consultancy, and Branding.</p>
+
+        <!-- Education Samples -->
+        <div class="section">
+            <h2>Education Samples</h2>
+            <div class="grid">
+                <!-- Example: Add more cards as files are synced -->
+                <div class="sample-card">
+                    <img src="samples/education/jamb-sample.jpg" alt="Sample JAMB Registration Form">
+                    <p>JAMB Registration Example</p>
+                </div>
+                <div class="sample-card">
+                    <img src="samples/education/post-utme-sample.pdf" alt="Sample Post-UTME Guide"> <!-- If PDF, use embed or link -->
+                    <p><a href="samples/education/post-utme-sample.pdf" target="_blank">Post-UTME Guide (PDF)</a></p>
+                </div>
+                <!-- Add more as needed -->
+            </div>
+        </div>
+
+        <!-- Identity Samples -->
+        <div class="section">
+            <h2>Identity Samples</h2>
+            <div class="grid">
+                <div class="sample-card">
+                    <img src="samples/identity/nin-sample.jpg" alt="Sample NIN Slip">
+                    <p>NIN Slip Example</p>
+                </div>
+                <!-- Add more -->
+            </div>
+        </div>
+
+        <!-- Consultancy Samples -->
+        <div class="section">
+            <h2>Consultancy Samples</h2>
+            <div class="grid">
+                <div class="sample-card">
+                    <img src="samples/consultancy/network-topology-sample.jpg" alt="Sample Network Topology Diagram">
+                    <p>Network Topology Example</p>
+                </div>
+                <!-- Add more -->
+            </div>
+        </div>
+
+        <!-- Branding Samples -->
+        <div class="section">
+            <h2>Branding Samples</h2>
+            <div class="grid">
+                <div class="sample-card">
+                    <img src="samples/branding/e-flyer-sample.jpg" alt="Sample e-Flyer">
+                    <p>e-Flyer Design Example</p>
+                </div>
+                <!-- Add more -->
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
