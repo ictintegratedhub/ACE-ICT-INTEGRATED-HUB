@@ -630,30 +630,57 @@
     </header>
 
     <!-- Hero Section -->
-<section id="hero" style="height: 100vh; min-height: 800px; margin: 0; padding: 0; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; background: #1a1a1a;">
-    <!-- Subtle background overlay (optional) -->
-    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(212,175,55,0.06) 0%, transparent 60%);"></div>
+<section id="hero" style="height: 100vh; min-height: 800px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); color: #fff;">
+    <!-- Animated Gradient Overlay -->
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(212,175,55,0.08) 0%, transparent 50%); animation: pulse 12s infinite ease-in-out;"></div>
 
-    <!-- Content  -->
-    <div style="position: relative; z-index: 2; max-width: 1000px; padding: 0 20px;">
-        <h1 data-aos="fade-up" style="font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; margin: 0 0 24px; line-height: 0.95; background: linear-gradient(90deg, #fff, #d4af37, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 4px 30px rgba(212,175,55,0.25);">
+    <!-- Content Container -->
+    <div style="position: relative; z-index: 2; max-width: 900px; padding: 0 20px;">
+        <h1 data-aos="fade-up" style="font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; margin: 0 0 20px; background: linear-gradient(90deg, #fff, #d4af37, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 4px 20px rgba(212,175,55,0.3);">
             One Stop Tech Hub
         </h1>
 
-        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.5rem; color: #ddd; margin: 0 0 50px; max-width: 700px; margin-left: auto; margin-right: auto;">
+        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.4rem; color: #ccc; margin: 0 0 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
             Trusted by <strong style="color: #d4af37;">1000+ students</strong> • Same-day service
         </p>
 
+        <!-- Trust Icons (optional but catchy) -->
+        <div data-aos="fade-up" data-aos-delay="300" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; font-size: 1.1rem;">
+            <span><i class="fas fa-users" style="color: #d4af37; margin-right: 8px;"></i> 1000+ Happy Clients</span>
+            <span><i class="fas fa-clock" style="color: #d4af37; margin-right: 8px;"></i> Fast Delivery</span>
+        </div>
+
         <!-- CTA Buttons -->
-        <div data-aos="fade-up" data-aos-delay="400" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;">
-            <button class="btn-primary smooth-scroll" onclick="scrollToSection('#contact')" style="padding: 18px 48px; font-size: 1.3rem; background: #d4af37; color: #1a1a1a; border: none; border-radius: 50px; font-weight: 700; box-shadow: 0 6px 25px rgba(212,175,55,0.5); transition: all 0.3s ease;">
+        <div data-aos="fade-up" data-aos-delay="400" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <button 
+                class="btn-primary smooth-scroll" 
+                onclick="scrollToSection('#contact')" 
+                style="padding: 16px 40px; font-size: 1.2rem; background: linear-gradient(90deg, #d4af37, #b8972e); border: none; border-radius: 50px; color: #1a1a1a; font-weight: 700; transition: all 0.4s ease; box-shadow: 0 4px 20px rgba(212,175,55,0.4);">
                 Get Started Today
             </button>
-            <button class="btn-secondary smooth-scroll" onclick="scrollToSection('#services')" style="padding: 18px 48px; font-size: 1.3rem; background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 50px; font-weight: 600; transition: all 0.3s ease;">
+            <button 
+                class="btn-secondary smooth-scroll" 
+                onclick="scrollToSection('#services')" 
+                style="padding: 16px 40px; font-size: 1.2rem; background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 50px; font-weight: 600; transition: all 0.4s ease;">
                 View Our Services
             </button>
         </div>
     </div>
+
+    <!-- Subtle Background Animation -->
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.1); }
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(212,175,55,0.12) 0%, transparent 60%);
+            animation: pulse 15s infinite ease-in-out;
+        }
+    </style>
 </section>
 
 
