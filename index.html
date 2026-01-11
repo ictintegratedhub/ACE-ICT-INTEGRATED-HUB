@@ -630,33 +630,58 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero">
-        <img src="Favicon.jpg" alt="Abstract tech pattern for ICT hub hero" style="display: none;">
-        <h1 data-aos="fade-down">One Stop Tech Hub</h1>
-        <p data-aos="fade-up">Trusted by 1000+ students • Same-day service</p>
-        <div data-aos="fade-up" data-aos-delay="200">
-            <button class="btn-primary smooth-scroll" onclick="scrollToSection('#contact')">Get Started Today</button>
-            <button class="btn-secondary smooth-scroll" onclick="scrollToSection('#services')">View Our Services</button>
+<section id="hero" style="height: 100vh; min-height: 800px; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%); color: #fff;">
+    <!-- Animated Gradient Overlay -->
+    <div style="position: absolute; inset: 0; background: radial-gradient(circle at 30% 70%, rgba(212,175,55,0.08) 0%, transparent 50%); animation: pulse 12s infinite ease-in-out;"></div>
+
+    <!-- Content Container -->
+    <div style="position: relative; z-index: 2; max-width: 900px; padding: 0 20px;">
+        <h1 data-aos="fade-up" style="font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 800; margin: 0 0 20px; background: linear-gradient(90deg, #fff, #d4af37, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 4px 20px rgba(212,175,55,0.3);">
+            One Stop Tech Hub
+        </h1>
+
+        <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.4rem; color: #ccc; margin: 0 0 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Trusted by <strong style="color: #d4af37;">1000+ students</strong> • Same-day service
+        </p>
+
+        <!-- Trust Icons (optional but catchy) -->
+        <div data-aos="fade-up" data-aos-delay="300" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; font-size: 1.1rem;">
+            <span><i class="fas fa-users" style="color: #d4af37; margin-right: 8px;"></i> 1000+ Happy Clients</span>
+            <span><i class="fas fa-clock" style="color: #d4af37; margin-right: 8px;"></i> Fast Delivery</span>
         </div>
-        <div class="floating-cards" data-aos="fade-in" data-aos-delay="400">
-            <div class="floating-card">
-                <h3>Fast Education Support</h3>
-                <p>Streamline your academic journey</p>
-            </div>
-            <div class="floating-card">
-                <h3>Secure Identity Services</h3>
-                <p>Quick and confidential ID solutions</p>
-            </div>
-            <div class="floating-card">
-                <h3>Expert Consultancy</h3>
-                <p>Tailored tech advice</p>
-            </div>
-            <div class="floating-card">
-                <h3>Professional Branding</h3>
-                <p>Elevate your presence</p>
-            </div>
+
+        <!-- CTA Buttons -->
+        <div data-aos="fade-up" data-aos-delay="400" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+            <button 
+                class="btn-primary smooth-scroll" 
+                onclick="scrollToSection('#contact')" 
+                style="padding: 16px 40px; font-size: 1.2rem; background: linear-gradient(90deg, #d4af37, #b8972e); border: none; border-radius: 50px; color: #1a1a1a; font-weight: 700; transition: all 0.4s ease; box-shadow: 0 4px 20px rgba(212,175,55,0.4);">
+                Get Started Today
+            </button>
+            <button 
+                class="btn-secondary smooth-scroll" 
+                onclick="scrollToSection('#services')" 
+                style="padding: 16px 40px; font-size: 1.2rem; background: transparent; border: 2px solid #d4af37; color: #d4af37; border-radius: 50px; font-weight: 600; transition: all 0.4s ease;">
+                View Our Services
+            </button>
         </div>
-    </section>
+    </div>
+
+    <!-- Subtle Background Animation -->
+    <style>
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.1); }
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(212,175,55,0.12) 0%, transparent 60%);
+            animation: pulse 15s infinite ease-in-out;
+        }
+    </style>
+</section>
 
     <!-- Services Section -->
     <section id="services" data-aos="fade-up">
