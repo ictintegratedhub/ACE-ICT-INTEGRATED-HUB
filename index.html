@@ -644,11 +644,31 @@
             Trusted by <strong style="color: #d4af37;">1000+ students</strong> • Same-day service
         </p>
 
-        <!-- Trust Icons (optional but catchy) -->
+        <!-- Trust Icons -->
         <div data-aos="fade-up" data-aos-delay="300" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; font-size: 1.1rem;">
             <span><i class="fas fa-users" style="color: #d4af37; margin-right: 8px;"></i> 1000+ Happy Clients</span>
             <span><i class="fas fa-clock" style="color: #d4af37; margin-right: 8px;"></i> Fast Delivery</span>
         </div>
+
+<!-- Floating Computers Animation -->
+<div class="floating-computers" style="position: absolute; inset: 0; pointer-events: none; overflow: hidden;">
+    <div class="computer" style="position: absolute; width: 180px; opacity: 0.15; animation: float-left 25s linear infinite; top: 20%; left: 120%;">
+        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=800&q=80" alt="Laptop 1" style="width: 100%; filter: brightness(0.8) hue-rotate(30deg);">
+    </div>
+    <div class="computer" style="position: absolute; width: 160px; opacity: 0.12; animation: float-left 30s linear infinite 5s; top: 45%; left: 130%;">
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80" alt="Laptop 2" style="width: 100%; filter: brightness(0.7) hue-rotate(20deg);">
+    </div>
+    <div class="computer" style="position: absolute; width: 200px; opacity: 0.14; animation: float-left 28s linear infinite 10s; top: 65%; left: 115%;">
+        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=80" alt="Laptop 3" style="width: 100%; filter: brightness(0.75) hue-rotate(25deg);">
+    </div>
+</div>
+
+<style>
+    @keyframes float-left {
+        0%   { transform: translateX(0) rotate(0deg); }
+        100% { transform: translateX(-150vw) rotate(360deg); }
+    }
+</style>
 
         <!-- CTA Buttons -->
         <div data-aos="fade-up" data-aos-delay="400" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
