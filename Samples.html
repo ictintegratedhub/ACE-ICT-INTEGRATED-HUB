@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samples & Portfolio | ICT Integrated Hub</title>
-    <meta name="description" content="View real examples of our work in education support, identity services, tech consultancy, and branding at ICT Integrated Hub.">
+    <meta name="description" content="View real examples of our work in education, identity services, consultancy, and branding at ICT Integrated Hub.">
 
-    
+    <!-- Preconnect & Preload for speed -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" as="style">
+
+    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- AOS & BaguetteBox (lightbox) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css">
 
     <style>
         :root {
@@ -97,6 +105,9 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(212,175,55,0.25);
         }
+        .sample-item a {
+            display: block;
+        }
         .sample-item img {
             width: 100%;
             height: 220px;
@@ -121,7 +132,7 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- Simple Header -->
     <header>
         <div class="logo">ICT Integrated Hub</div>
         <a href="index.html" class="back-link">← Back to Home</a>
@@ -130,50 +141,60 @@
     <div class="container">
         <h1 data-aos="fade-up">Samples & Portfolio</h1>
         <p class="intro" data-aos="fade-up" data-aos-delay="200">
-            See real examples of how we help students, professionals, businesses and individuals every day with fast, reliable and professional ICT solutions.
+            Real examples of how we help students, professionals, businesses and individuals every day.
         </p>
 
-        <!-- Education Samples -->
+        <!-- Education -->
         <div class="category" data-aos="fade-up">
             <h2>Education Support</h2>
             <div class="grid">
                 <div class="sample-item">
-                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" alt="JAMB Registration Sample">
+                    <a href="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80" data-caption="JAMB Registration Support">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=600&fm=webp" alt="JAMB Registration Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>JAMB Registration</h3>
                         <p>Fast & accurate exam registration support</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80" alt="Post-UTME Result Sample">
+                    <a href="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80" data-caption="Post-UTME Result Checking">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Post-UTME Result Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>Post-UTME Result</h3>
                         <p>Successful result checking & admission guidance</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="NECO.jpg">
+                    <a href="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&q=80" data-caption="WAEC/NECO Certificate Support">
+                        <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&q=80&w=600&fm=webp" alt="WAEC Certificate Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
-                        <h3>WAEC/NECO Externals</h3>
-                        <p>GCE Registration</p>
+                        <h3>WAEC/NECO Support</h3>
+                        <p>Certificate collection & result verification</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Identity Samples -->
+        <!-- Identity -->
         <div class="category" data-aos="fade-up" data-aos-delay="100">
             <h2>Identity Services</h2>
             <div class="grid">
                 <div class="sample-item">
-                    <img src="NIN.jpg">
+                    <a href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" data-caption="NIN Slip Example">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600&fm=webp" alt="NIN Slip Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>NIN Slip</h3>
-                        <p>Quick NIN Validations & slip printing</p>
+                        <p>Quick NIN registration & slip printing</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="BVN.jpg">
+                    <a href="https://images.unsplash.com/photo-1563986768609-620da13593e0?auto=format&fit=crop&q=80" data-caption="BVN Printout Sample">
+                        <img src="https://images.unsplash.com/photo-1563986768609-620da13593e0?auto=format&fit=crop&q=80&w=600&fm=webp" alt="BVN Printout Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>BVN Printout</h3>
                         <p>Secure BVN retrieval & validation</p>
@@ -182,19 +203,23 @@
             </div>
         </div>
 
-        <!-- Consultancy Samples -->
+        <!-- Consultancy -->
         <div class="category" data-aos="fade-up" data-aos-delay="200">
             <h2>Consultancy & Tech Solutions</h2>
             <div class="grid">
                 <div class="sample-item">
-                    <img src="Setup.jpg">
+                    <a href="https://images.unsplash.com/photo-1558494949-ef0d7cfc0a3c?auto=format&fit=crop&q=80" data-caption="Network Topology Design">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef0d7cfc0a3c?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Network Topology Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
-                        <h3>Networking and System Setup</h3>
-                        <p>Professional system network design & setup</p>
+                        <h3>Network Topology</h3>
+                        <p>Professional network design & setup</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80">
+                    <a href="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80" data-caption="Career Guidance Plan">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Career Guidance Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>Career Guidance</h3>
                         <p>Personalized career path planning</p>
@@ -203,26 +228,32 @@
             </div>
         </div>
 
-        <!-- Branding Samples -->
+        <!-- Branding -->
         <div class="category" data-aos="fade-up" data-aos-delay="300">
             <h2>Branding & Design</h2>
             <div class="grid">
                 <div class="sample-item">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" alt="E-Flyer Sample">
+                    <a href="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" data-caption="E-Flyer Design Example">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=600&fm=webp" alt="E-Flyer Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>E-Flyer Design</h3>
                         <p>Eye-catching promotional flyers</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="Branding.png">
+                    <a href="https://images.unsplash.com/photo-1559028012-481c04fa06cb?auto=format&fit=crop&q=80" data-caption="Company Branding Mockup">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa06cb?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Company Branding Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>Company Branding</h3>
-                        <p>Brand identity package</p>
+                        <p>Complete brand identity package</p>
                     </div>
                 </div>
                 <div class="sample-item">
-                    <img src="Web.jpg">
+                    <a href="https://images.unsplash.com/photo-1460925898913-fff6a5e8c4f0?auto=format&fit=crop&q=80" data-caption="Website Development Sample">
+                        <img src="https://images.unsplash.com/photo-1460925898913-fff6a5e8c4f0?auto=format&fit=crop&q=80&w=600&fm=webp" alt="Web Development Sample" loading="lazy">
+                    </a>
                     <div class="sample-info">
                         <h3>Website Development</h3>
                         <p>Modern, responsive websites</p>
@@ -231,18 +262,29 @@
             </div>
         </div>
 
-        <!-- Final CTA -->
+        <!-- CTA -->
         <div style="text-align: center; margin-top: 80px;" data-aos="fade-up">
             <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Ready for Your Own Results?</h2>
-            <a href="index.html#contact" class="btn-primary" style="display: inline-block; padding: 16px 48px; background: #d4af37; color: #1a1a1a; border-radius: 50px; font-size: 1.3rem; font-weight: 700; text-decoration: none; box-shadow: 0 6px 25px rgba(212,175,55,0.4);">
+            <a href="index.html#contact" style="display: inline-block; padding: 16px 48px; background: #d4af37; color: #1a1a1a; border-radius: 50px; font-size: 1.3rem; font-weight: 700; text-decoration: none; box-shadow: 0 6px 25px rgba(212,175,55,0.4);">
                 Contact Us Today
             </a>
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Scripts (deferred for speed) -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
+
+        window.addEventListener('load', function() {
+            baguetteBox.run('.grid', {
+                captions: function(el) { return el.getElementsByTagName('h3')[0]?.innerText || ''; },
+                animation: 'fadeIn',
+                noScrollbars: true,
+                preload: 2
+            });
+        });
     </script>
 </body>
 </html>
