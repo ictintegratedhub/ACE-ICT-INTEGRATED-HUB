@@ -271,20 +271,27 @@
         </div>
     </div>
 
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script defer>
-    AOS.init({ duration: 800, once: false });
-</script>
-
-    <!-- Scripts (deferred for speed) -->
+    <!-- ScriptsSamp -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
     <script>
-        AOS.init({ duration: 800, once: false });
-
+        // Safe AOS initialization (prevents "AOS is not defined")
         window.addEventListener('load', function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    easing: 'ease-out'
+                });
+            } else {
+                console.warn('AOS library failed to load');
+            }
+
+            // Lightbox (baguetteBox)
             baguetteBox.run('.grid', {
-                captions: function(el) { return el.getElementsByTagName('h3')[0]?.innerText || ''; },
+                captions: function(el) {
+                    return el.getElementsByTagName('h3')[0]?.innerText || '';
+                },
                 animation: 'fadeIn',
                 noScrollbars: true,
                 preload: 2
