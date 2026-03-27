@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICT Integrated Hub • PDF Encryptor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #2C2118;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        /* Berlin Sans FB font - using similar fallback fonts */
+        .berlin-sans {
+            font-family: "Berlin Sans FB", "Impact", "Arial Black", "Franklin Gothic Heavy", sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #2C2118;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FFCC00;
+            border-radius: 4px;
+        }
+        
+        /* Drop zone styles */
+        .drop-zone {
+            transition: all 0.3s ease;
+            border: 2px dashed rgba(255, 204, 0, 0.3);
+            background: rgba(44, 33, 24, 0.5);
+        }
+        
+        .drop-zone.dragover {
+            background-color: rgba(255, 204, 0, 0.1);
+            border-color: #FFCC00;
+            transform: scale(1.02);
+        }
+        
+        /* Loading animation */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(31, 22, 15, 0.3);
+            border-radius: 50%;
+            border-top-color: #1F160F;
+            animation: spin 0.8s ease-in-out infinite;
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1F160F;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 16px;
+            border-left: 4px solid #FFCC00;
+            transform: translateX(500px);
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast.error {
+            border-left-color: #ef4444;
+        }
+        
+        .toast.success {
+            border-left-color: #22c55e;
+        }
+        
+        /* Input focus styles */
+        input:focus {
+            outline: none;
+            border-color: #FFCC00 !important;
+            box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.1);
+        }
+        
+        /* Button hover effect */
+        .encrypt-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .encrypt-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(255, 204, 0, 0.3);
+        }
+        
+        .encrypt-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        
+        /* File info card */
+        .file-card {
+            background: linear-gradient(135deg, #2C2118 0%, #241D16 100%);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+        
+        /* Strength meter */
+        .strength-meter {
+            background: #2C2118;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        
+        .strength-bar {
+            height: 100%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-3xl w-full mx-auto">
+        <!-- Main Card -->
+        <div class="bg-[#1F160F] rounded-3xl shadow-2xl overflow-hidden border border-[#FFCC00]/20">
+            
+            <!-- Header with Logo and Text -->
+            <div class="p-8 pb-0">
+                <div class="flex items-start gap-6">
+                    <!-- Logo Container -->
+                    <div class="flex-shrink-0">
+                        <img src="/static/LOGO.png" 
+                             alt="ICT Integrated Hub Logo"
+                             class="w-28 h-28 object-contain drop-shadow-lg"
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-28 h-28 bg-[#FFCC00]/20 rounded-2xl flex items-center justify-center text-5xl\'>📄</div>'">
+                    </div>
+                    
+                    <!-- Berlin Sans Text - Exactly as requested -->
+                    <div class="berlin-sans text-white flex flex-col justify-center" style="height: 112px;">
+                        <span class="text-[48px] leading-none tracking-tight">ICT</span>
+                        <span class="text-[44px] leading-none tracking-tight -mt-1">INTEGRATED</span>
+                        <span class="text-[44px] leading-none tracking-tight -mt-1">HUB</span>
+                    </div>
+                    
+                    <!-- Right side badge -->
+                    <div class="ml-auto text-right">
+                        <div class="inline-flex items-center gap-2 bg-[#FFCC00] text-[#1F160F] px-5 py-2 rounded-full text-sm font-bold tracking-wide">
+                            <span class="text-base">🔐</span>
+                            PDF ENCRYPTOR
+                        </div>
+                        <p class="text-[#FFCC00]/80 text-[10px] mt-2 tracking-wider font-semibold">ONE STOP TECH HUB</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Form Content -->
+            <div class="p-8 pt-6">
+                <form id="upload-form" class="space-y-6">
+                    
+                    <!-- Drop Zone -->
+                    <div id="drop-zone" 
+                         class="drop-zone rounded-2xl h-52 flex flex-col items-center justify-center cursor-pointer transition-all">
+                        <input type="file" name="file" id="file-input" accept=".pdf" class="hidden" required>
+                        <div id="drop-text" class="text-center px-4">
+                            <p class="text-6xl mb-3">📄</p>
+                            <p class="text-xl font-semibold text-white mb-1">Drop your PDF here</p>
+                            <p class="text-[#FFCC00] text-sm">or click to browse</p>
+                        </div>
+                    </div>
+                    
+                    <!-- File Selected Info (Hidden by default) -->
+                    <div id="file-selected" class="hidden file-card rounded-2xl p-5 flex items-center gap-4 border border-[#FFCC00]/20">
+                        <div class="text-5xl">📄</div>
+                        <div class="flex-1 min-w-0">
+                            <p id="filename" class="font-semibold text-white text-lg truncate"></p>
+                            <p id="filesize" class="text-[#FFCC00] text-sm mt-1"></p>
+                        </div>
+                        <button type="button" onclick="clearFile()" 
+                                class="text-[#FFCC00] hover:text-white border border-[#FFCC00]/30 hover:border-[#FFCC00] px-5 py-2 rounded-xl text-sm font-medium transition-all">
+                            REMOVE
+                        </button>
+                    </div>
+                    
+                    <!-- Password Section -->
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-[#FFCC00] text-sm font-bold mb-2 tracking-wide">PASSWORD TO OPEN THE PDF</label>
+                            <div class="relative">
+                                <input type="password" name="password" id="password" 
+                                       placeholder="Enter strong password"
+                                       class="w-full bg-[#2C2118] border border-[#FFCC00]/30 rounded-xl px-5 py-4 text-white placeholder:text-gray-500 focus:border-[#FFCC00] transition-all">
+                                <button type="button" onclick="togglePassword()" 
+                                        class="absolute right-5 top-1/2 -translate-y-1/2 text-[#FFCC00] hover:text-[#FFCC00]/80 text-xl">
+                                    👁️
+                                </button>
+                            </div>
+                            <!-- Strength meter -->
+                            <div class="mt-3 strength-meter h-1.5">
+                                <div id="strength-bar" class="strength-bar w-0 h-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <input type="password" name="password_confirm" id="password_confirm"
+                                   placeholder="Confirm password"
+                                   class="w-full bg-[#2C2118] border border-[#FFCC00]/30 rounded-xl px-5 py-4 text-white placeholder:text-gray-500 focus:border-[#FFCC00] transition-all">
+                            <p id="match-status" class="text-xs mt-2 hidden"></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Encrypt Button -->
+                    <button type="submit"
+                            id="encrypt-btn"
+                            class="encrypt-btn w-full bg-[#FFCC00] hover:bg-[#FFBB00] text-[#1F160F] py-5 rounded-xl font-bold text-xl transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <span>🔒 ENCRYPT &amp; DOWNLOAD</span>
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Footer -->
+            <div class="px-8 pb-8">
+                <p class="text-center text-[#FFCC00]/50 text-xs tracking-wide">
+                    AES-256 • Bank-level security • Powered by ICT Integrated Hub
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div id="toast" class="toast"></div>
+    
+    <script>
+        // ============================================
+        // CONFIGURATION
+        // ============================================
+        const API_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:8000'  // Local development
+            : 'https://your-api-url.com';  // UPDATE THIS with your deployed API URL
+        
+        // ============================================
+        // API CLIENT
+        // ============================================
+        class PDFEncryptorAPI {
+            constructor(apiUrl) {
+                this.apiUrl = apiUrl;
+            }
+            
+            async encryptPDF(file, password) {
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('password', password);
+                formData.append('password_confirm', password);
+                
+                try {
+                    const response = await fetch(`${this.apiUrl}/encrypt`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    if (!response.ok) {
+                        let errorMessage;
+                        try {
+                            const error = await response.json();
+                            errorMessage = error.detail || `HTTP ${response.status}: ${response.statusText}`;
+                        } catch {
+                            errorMessage = `HTTP ${response.status}: ${response.statusText}`;
+                        }
+                        throw new Error(errorMessage);
+                    }
+                    
+                    // Download the encrypted file
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `LOCKED_${file.name}`;
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                    
+                    return { success: true };
+                } catch (error) {
+                    console.error('API Error:', error);
+                    throw error;
+                }
+            }
+        }
+        
+        // ============================================
+        // UI FUNCTIONS
+        // ============================================
+        
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+        
+        function setLoading(loading) {
+            const btn = document.getElementById('encrypt-btn');
+            const btnSpan = btn.querySelector('span');
+            
+            if (loading) {
+                btn.disabled = true;
+                btnSpan.innerHTML = '<span class="loading-spinner"></span> ENCRYPTING...';
+            } else {
+                btn.disabled = false;
+                btnSpan.innerHTML = '🔒 ENCRYPT & DOWNLOAD';
+            }
+        }
+        
+        function checkStrength(password) {
+            const bar = document.getElementById('strength-bar');
+            let strength = 0;
+            if (password.length >= 8) strength += 30;
+            if (/[A-Z]/.test(password)) strength += 25;
+            if (/[0-9]/.test(password)) strength += 25;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+            
+            bar.style.width = strength + '%';
+            if (strength > 70) {
+                bar.style.backgroundColor = '#22c55e';
+            } else if (strength > 40) {
+                bar.style.backgroundColor = '#FFCC00';
+            } else {
+                bar.style.backgroundColor = '#ef4444';
+            }
+        }
+        
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            pwd.type = pwd.type === 'password' ? 'text' : 'password';
+        }
+        
+        function updateMatchStatus(pwd, confirm) {
+            const status = document.getElementById('match-status');
+            if (!confirm) {
+                status.classList.add('hidden');
+                return;
+            }
+            status.classList.remove('hidden');
+            if (pwd === confirm) {
+                status.innerHTML = '✅ Passwords match';
+                status.style.color = '#22c55e';
+            } else {
+                status.innerHTML = '❌ Passwords do not match';
+                status.style.color = '#ef4444';
+            }
+        }
+        
+        function handleFileSelect() {
+            const file = fileInput.files[0];
+            if (!file) return;
+            
+            if (!file.name.toLowerCase().endsWith('.pdf')) {
+                showToast('Please select a PDF file', 'error');
+                clearFile();
+                return;
+            }
+            
+            const maxSize = 50 * 1024 * 1024;
+            if (file.size > maxSize) {
+                showToast('File too large. Maximum size is 50MB', 'error');
+                clearFile();
+                return;
+            }
+            
+            document.getElementById('drop-text').classList.add('hidden');
+            document.getElementById('file-selected').classList.remove('hidden');
+            document.getElementById('filename').textContent = file.name;
+            document.getElementById('filesize').textContent = (file.size / 1024 / 1024).toFixed(2) + ' MB';
+        }
+        
+        function clearFile() {
+            fileInput.value = '';
+            document.getElementById('drop-text').classList.remove('hidden');
+            document.getElementById('file-selected').classList.add('hidden');
+        }
+        
+        // ============================================
+        // FORM SUBMIT HANDLER
+        // ============================================
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const file = document.getElementById('file-input').files[0];
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('password_confirm').value;
+            
+            if (!file) {
+                showToast('Please select a PDF file', 'error');
+                return;
+            }
+            
+            if (!password) {
+                showToast('Please enter a password', 'error');
+                return;
+            }
+            
+            if (password !== confirm) {
+                showToast('Passwords do not match', 'error');
+                return;
+            }
+            
+            if (password.length < 8) {
+                showToast('Password must be at least 8 characters', 'error');
+                return;
+            }
+            
+            const api = new PDFEncryptorAPI(API_URL);
+            setLoading(true);
+            
+            try {
+                await api.encryptPDF(file, password);
+                showToast('✅ PDF encrypted successfully! Download started.', 'success');
+            } catch (error) {
+                showToast(`❌ Encryption failed: ${error.message}`, 'error');
+            } finally {
+                setLoading(false);
+            }
+        }
+        
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        
+        dropZone.addEventListener('click', () => fileInput.click());
+        fileInput.addEventListener('change', handleFileSelect);
+        
+        dropZone.addEventListener('dragover', e => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+        
+        dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            fileInput.files = e.dataTransfer.files;
+            handleFileSelect();
+        });
+        
+        document.getElementById('password').addEventListener('input', function() {
+            checkStrength(this.value);
+            const confirm = document.getElementById('password_confirm').value;
+            updateMatchStatus(this.value, confirm);
+        });
+        
+        document.getElementById('password_confirm').addEventListener('input', function() {
+            const pwd = document.getElementById('password').value;
+            updateMatchStatus(pwd, this.value);
+        });
+        
+        document.getElementById('upload-form').addEventListener('submit', handleSubmit);
+        
+        console.log('PDF Encryptor ready. API URL:', API_URL);
+    </script>
+</body>
+</html>
