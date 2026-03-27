@@ -38,6 +38,8 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
+    <script src="ictintegratedhub/ACE-ICT-INTEGRATED-HUB/PDF Encryptor/pdf-encryptor.js"></script>
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -756,6 +758,32 @@
                 </ul>
                 <button class="btn-primary smooth-scroll" onclick="scrollToSection('#contact')">Inquire Now</button>
             </div>
+                <!-- PDF Encryptor Service Section -->
+<div class="service-card" style="background: #1F160F; border-radius: 1rem; padding: 2rem; margin: 2rem 0; border: 1px solid rgba(255, 204, 0, 0.3);">
+  <div class="service-header" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+    <span style="font-size: 2.5rem;">🔒</span>
+    <h3 style="color: #FFCC00; margin: 0;">PDF Encryptor</h3>
+  </div>
+  <p style="margin-bottom: 1.5rem;">Secure your PDF files with bank-level AES-256 encryption. Protect sensitive documents with a strong password.</p>
+  
+  <!-- Encryptor Widget Container -->
+  <div id="pdf-encryptor-widget"></div>
+</div>
+
+<script>
+  // Initialize the PDF encryptor with your API URL
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof PDFEncryptor !== 'undefined') {
+      const API_URL = window.location.hostname === 'localhost' 
+        ? 'http://localhost:8000' 
+        : 'https://your-api-url.onrender.com'; // Replace with your actual API URL
+      
+      new PDFEncryptor(API_URL, 'pdf-encryptor-widget');
+    } else {
+      console.error('PDFEncryptor library not loaded');
+    }
+  });
+</script>
         </div>
     </section>
 
