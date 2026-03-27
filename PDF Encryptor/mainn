@@ -1,0 +1,105 @@
+from fastapi import FastAPI, UploadFile, File, Form, HTTPException
+from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.staticfiles import StaticFiles
+import pikepdf
+import tempfile
+import os
+import shutil
+import asyncio
+from pathlib import Path
+
+app = FastAPI(title="ICT Integrated Hub • PDF Encryptor")
+
+# Ensure static directory exists
+static_dir = Path("static")
+static_dir.mkdir(exist_ok=True)
+
+# Serve your logo (if it exists)
+if (static_dir / "LOGO.png").exists():
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+else:
+    print("Warning: static/LOGO.png not found")
+
+MAX_FILE_SIZE = 50 * 1024 * 1024  # 50MB limit
+
+@app.get("/", response_class=HTMLResponse)
+async def home():
+    return HTML  # (HTML content same as above)
+
+@app.post("/encrypt")
+async def encrypt_pdf(
+    file: UploadFile = File(...), 
+    password: str = Form(...),
+    password_confirm: str = Form(...)
+):
+    # Validate inputs
+    if password != password_confirm:
+        raise HTTPException(status_code=400, detail="Passwords do not match")
+    
+    if len(password) < 8:
+        raise HTTPException(status_code=400, detail="Password must be at least 8 characters")
+    
+    if not file.filename.lower().endswith('.pdf'):
+        raise HTTPException(status_code=400, detail="File must be a PDF")
+    
+    input_path = None
+    output_path = None
+    
+    try:
+        # Create temporary files
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_in:
+            # Copy with size limit check
+            content = await file.read()
+            if len(content) > MAX_FILE_SIZE:
+                raise HTTPException(status_code=400, detail=f"File too large. Max size: {MAX_FILE_SIZE // (1024*1024)}MB")
+            
+            tmp_in.write(content)
+            input_path = tmp_in.name
+        
+        output_path = input_path + "_locked.pdf"
+        
+        # Encrypt the PDF
+        try:
+            with pikepdf.open(input_path) as pdf:
+                pdf.save(
+                    output_path, 
+                    encryption=pikepdf.Encryption(
+                        user=password, 
+                        owner=password, 
+                        R=6  # AES-256
+                    )
+                )
+        except pikepdf.PdfError as e:
+            raise HTTPException(status_code=400, detail=f"Invalid PDF file: {str(e)}")
+        
+        # Return the encrypted file
+        return FileResponse(
+            output_path,
+            media_type="application/pdf",
+            filename=f"LOCKED_{file.filename}",
+            background=asyncio.create_task(cleanup_files(input_path, output_path))
+        )
+    
+    except HTTPException:
+        # Clean up on error
+        await cleanup_files(input_path, output_path)
+        raise
+    except Exception as e:
+        await cleanup_files(input_path, output_path)
+        raise HTTPException(status_code=500, detail=f"Encryption failed: {str(e)}")
+    finally:
+        # Ensure the uploaded file is closed
+        await file.close()
+
+async def cleanup_files(*paths):
+    """Clean up temporary files"""
+    for path in paths:
+        if path and os.path.exists(path):
+            try:
+                os.unlink(path)
+            except Exception as e:
+                print(f"Failed to delete {path}: {e}")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
