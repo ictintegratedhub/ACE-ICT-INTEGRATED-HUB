@@ -38,7 +38,7 @@
             border-collapse: collapse;
           }
           th {
-            background: #0d6efd;
+            background: #2c1e0f;
             color: white;
             padding: 15px;
             text-align: left;
@@ -51,7 +51,7 @@
             background: #f8f9ff;
           }
           a {
-            color: #0d6efd;
+            color: #2c1e0f;
             text-decoration: none;
           }
           a:hover {
