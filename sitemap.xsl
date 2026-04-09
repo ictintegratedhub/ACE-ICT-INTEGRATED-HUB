@@ -68,7 +68,7 @@
       <body>
         <div class="container">
           <div class="header">
-            <div class="logo">🌐 ICT Integrated Hub</div>
+            <div class="logo"> <LOGO class="png"></LOGO> ICT Integrated Hub</div>
             <p>One Stop Tech Hub in Nigeria</p>
             <h1>Website Sitemap</h1>
           </div>
