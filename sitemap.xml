@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
     <loc>https://www.ictintegratedhub.site/</loc>
@@ -9,7 +10,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Samples & Portfolio Page -->
+  <!-- Samples Page -->
   <url>
     <loc>https://www.ictintegratedhub.site/Samples.html</loc>
     <lastmod>2026-04-09</lastmod>
