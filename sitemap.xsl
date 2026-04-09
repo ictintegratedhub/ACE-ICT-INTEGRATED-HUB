@@ -13,7 +13,7 @@
             padding: 20px;
           }
           .header {
-            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            background: linear-gradient(135deg, #2c1e0f, #2c1e0f);
             color: white;
             padding: 25px;
             text-align: center;
@@ -68,7 +68,14 @@
       <body>
         <div class="container">
           <div class="header">
-            <div class="logo"> <LOGO class="png"></LOGO> ICT Integrated Hub</div>
+            <div class="logo">
+            
+            <img 
+            src="LOGO.png" 
+            alt="ICT Integrated Hub Logo" 
+            style="height: 80px; width: auto; object-fit: contain;">
+            
+             ICT Integrated Hub</div>
             <p>One Stop Tech Hub in Nigeria</p>
             <h1>Website Sitemap</h1>
           </div>
