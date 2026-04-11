@@ -2,33 +2,27 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  base_url: hhttps://sveltia-cms-auth.ictintegratedhub.workers.dev/
-
-media_folder: "static/uploads"
-public_folder: "/uploads"
-
-collections:
-  - name: "posts"
-    label: "Blog Posts"
-    folder: "content/posts"
-    create: true
-    extension: "md"
-    format: "yaml-frontmatter"
-    fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Date"
-        name: "date"
-        widget: "datetime"
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-
-        backend:
-  name: github
-  repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
-  branch: main
-  base_url: https://sveltia-cms-auth.ictintegratedhub.workers.dev/
+  base_url: https://sveltia-cms-auth.ictintegratedhub.workers.dev
   auth:
     client_id: Ov23liThFQAMDEEpIU82
+
+media_folder: static/media
+public_folder: /static/media
+
+collections:
+  - name: posts
+    label: Blog Posts
+    folder: content/posts
+    create: true
+    extension: md
+    format: yaml-frontmatter
+    fields:
+      - name: title
+        label: Title
+        widget: string
+      - name: date
+        label: Date
+        widget: datetime
+      - name: body
+        label: Body
+        widget: markdown
