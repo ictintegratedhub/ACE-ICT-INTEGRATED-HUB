@@ -6,8 +6,8 @@ backend:
   auth:
     client_id: Ov23liThFQAMDEEpIU82
 
-media_folder: static/media
-public_folder: /static/media
+media_folder: static/images/uploads
+public_folder: /static/images/uploads
 
 collections:
   - name: posts
@@ -23,6 +23,11 @@ collections:
       - name: date
         label: Date
         widget: datetime
+      - name: thumbnail
+        label: Thumbnail Image
+        widget: image
+        required: false
+        hint: "Upload a thumbnail image for the blog card"
       - name: body
         label: Body
         widget: markdown
