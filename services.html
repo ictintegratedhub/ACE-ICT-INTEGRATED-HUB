@@ -73,7 +73,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Header - Same as samples.html */
+        /* Header - Fixed Logo */
         header {
             position: sticky;
             top: 0;
@@ -95,21 +95,22 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
-            border-radius: 10px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary-dark);
             transition: var(--transition-default);
         }
 
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .logo-text {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
             -webkit-background-clip: text;
@@ -424,7 +425,7 @@
             color: var(--text-muted);
         }
 
-        /* CTA Section - Same as samples */
+        /* CTA Section */
         .cta-section {
             text-align: center;
             padding: 80px 5%;
@@ -449,7 +450,7 @@
             background: var(--btn-hover);
         }
 
-        /* Footer - Same as samples */
+        /* Footer */
         footer {
             background: #0d0d0d;
             padding: 60px 5% 30px;
@@ -491,18 +492,13 @@
         }
 
         @media (max-width: 640px) {
-            .logo-text { font-size: 1.1rem; letter-spacing: -0.3px; }
-            .logo-icon { width: 32px; height: 32px; }
+            .logo-text { font-size: 1rem; }
+            .logo-icon { width: 35px; height: 35px; }
             .category-header { padding: 25px 20px; }
             .category-header h2 i { font-size: 1.6rem; }
             .category-header p { margin-left: 0; margin-top: 10px; }
             .services-grid { padding: 20px; grid-template-columns: 1fr; }
             .service-item { padding: 15px 20px; }
-        }
-
-        /* Animation for AOS */
-        [data-aos] {
-            pointer-events: auto !important;
         }
     </style>
 </head>
@@ -511,8 +507,7 @@
     <!-- Header -->
     <header>
         <a href="index.html" class="logo">
-             <div class="logo-icon">
-                
+            <div class="logo-icon">
                 <img src="LOGO.png" alt="ICT Integrated Hub Logo">
             </div>
             <span class="logo-text">ICT Integrated Hub</span>
@@ -698,4 +693,4 @@
         }
     </script>
 </body>
-</html>
+</html>Update
