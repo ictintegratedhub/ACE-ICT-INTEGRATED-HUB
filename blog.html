@@ -62,7 +62,7 @@
         "name": "ICT Integrated Hub",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ictintegratedhub.site/LOGOO.png"
+          "url": "https://ictintegratedhub.site/LOGO.png"
         },
         "sameAs": [
           "https://www.instagram.com/ict_integrated_hub?igsh=MWFvNGV6NWkycDJy",
@@ -110,7 +110,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo, .nav-links a {
+        h1, h2, h3, h4, .logo-text {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -149,7 +149,7 @@
             font-weight: 600;
         }
 
-        /* Header */
+        /* Header with Logo Image */
         header {
             position: sticky;
             top: 0;
@@ -165,18 +165,46 @@
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: var(--transition-default);
         }
 
-        .logo:hover {
-            opacity: 0.9;
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.05);
+        }
+
+        .logo:hover .logo-text {
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--gold-accent) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         nav ul {
@@ -330,10 +358,12 @@
         .breadcrumbs a {
             color: var(--gold-accent);
             text-decoration: none;
+            transition: var(--transition-default);
         }
 
         .breadcrumbs a:hover {
             text-decoration: underline;
+            color: var(--gold-light);
         }
 
         .breadcrumbs span {
@@ -352,6 +382,25 @@
             padding: 60px 5% 50px;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation: rotateBg 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .blog-hero h1 {
@@ -360,6 +409,8 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
         }
 
         .blog-hero p {
@@ -367,6 +418,8 @@
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         @media (min-width: 992px) {
@@ -444,12 +497,23 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #1a1a1a, #2c1e0f);
+            transition: var(--transition-default);
+        }
+
+        .blog-card:hover .no-thumbnail {
+            background: linear-gradient(135deg, #2a2a2a, #3c2e1f);
         }
 
         .no-thumbnail i {
             font-size: 4rem;
             color: var(--gold-accent);
             opacity: 0.5;
+            transition: var(--transition-default);
+        }
+
+        .blog-card:hover .no-thumbnail i {
+            opacity: 0.8;
+            transform: scale(1.05);
         }
 
         .card-badge {
@@ -463,6 +527,12 @@
             font-size: 0.7rem;
             font-weight: 600;
             z-index: 2;
+            transition: var(--transition-default);
+        }
+
+        .blog-card:hover .card-badge {
+            background: var(--gold-light);
+            transform: scale(1.05);
         }
 
         .card-content {
@@ -497,6 +567,7 @@
 
         .blog-card:hover .card-title {
             color: var(--gold-accent);
+            transform: translateY(-2px);
         }
 
         .card-excerpt {
@@ -504,6 +575,11 @@
             line-height: 1.7;
             margin-bottom: 20px;
             flex: 1;
+            transition: var(--transition-default);
+        }
+
+        .blog-card:hover .card-excerpt {
+            color: var(--text-light);
         }
 
         .read-more {
@@ -519,6 +595,7 @@
 
         .read-more:hover {
             gap: 12px;
+            color: var(--gold-light);
         }
 
         /* Loading, Empty & Error States */
@@ -528,6 +605,7 @@
             background: var(--secondary-dark);
             border-radius: 20px;
             grid-column: 1 / -1;
+            transition: var(--transition-default);
         }
 
         .loading-state i, .empty-state i, .error-state i {
@@ -561,6 +639,7 @@
             background: var(--gold-accent);
             color: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
         }
 
         .pagination button:disabled {
@@ -570,6 +649,7 @@
 
         .pagination span {
             color: var(--text-muted);
+            transition: var(--transition-default);
         }
 
         /* Footer */
@@ -607,6 +687,7 @@
 
         .footer-links a:hover {
             color: var(--gold-accent);
+            transform: translateY(-2px);
         }
 
         .footer-social {
@@ -654,6 +735,16 @@
                 padding: 60px 8% 30px;
             }
         }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -663,12 +754,17 @@
 
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">ICT Integrated Hub</a>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="LOGO.png" alt="ICT Integrated Hub Logo">
+            </div>
+            <span class="logo-text">ICT Integrated Hub</span>
+        </a>
         
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="samples.html">Samples</a></li>
                 <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -692,7 +788,7 @@
         <div class="close-menu" onclick="toggleMobileMenu()">&times;</div>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="samples.html">Samples</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
@@ -745,7 +841,7 @@
 
         <div class="footer-links">
             <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
+            <a href="services.html">Services</a>
             <a href="samples.html">Samples</a>
             <a href="blog.html">Blog</a>
             <a href="about.html">About Us</a>
@@ -944,51 +1040,4 @@
                         <div class="card-thumbnail">
                             ${post.thumbnail ? 
                                 `<img src="${post.thumbnail}" alt="Thumbnail for ${escapeHtml(post.title)}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\'no-thumbnail\'><i class=\'fas fa-newspaper\'></i></div>'">` :
-                                `<div class="no-thumbnail"><i class="fas fa-newspaper"></i></div>`
-                            }
-                            <div class="card-badge">Latest</div>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-meta">
-                                <span><i class="fas fa-calendar-alt"></i> ${post.date || 'Recent'}</span>
-                            </div>
-                            <h3 class="card-title">${escapeHtml(post.title)}</h3>
-                            <p class="card-excerpt">${escapeHtml(post.excerpt)}</p>
-                            <a href="${postUrl}" class="read-more" aria-label="Read more about ${escapeHtml(post.title)}">
-                                Read More <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </article>
-                `;
-            }
-            
-            blogGrid.innerHTML = postsHTML;
-            
-            if (totalPages > 1) {
-                paginationDiv.style.display = 'flex';
-                document.getElementById('page-info').innerHTML = `Page ${page} of ${totalPages}`;
-                const prevBtn = document.getElementById('prev-btn');
-                const nextBtn = document.getElementById('next-btn');
-                if (prevBtn) prevBtn.disabled = (page === 1);
-                if (nextBtn) nextBtn.disabled = (page === totalPages);
-            } else {
-                paginationDiv.style.display = 'none';
-            }
-            
-            currentPage = page;
-            window.scrollTo({ top: document.getElementById('main-content').offsetTop - 100, behavior: 'smooth' });
-        }
-
-        function changePage(direction) {
-            const totalPages = Math.ceil(allPosts.length / postsPerPage);
-            const newPage = currentPage + direction;
-            if (newPage >= 1 && newPage <= totalPages) {
-                renderPage(newPage);
-            }
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', loadBlogPosts);
-    </script>
-</body>
-</html>
+                               
