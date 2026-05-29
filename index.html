@@ -1298,7 +1298,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS (but with delay to wait for content)
+        // Initialize AOS 
         AOS.init({ duration: 800, once: true, offset: 50, disable: true });
         
         // Mobile menu functions
@@ -1310,8 +1310,7 @@
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // PRODUCTION-READY SKELETON LOADING
-        // Wait for all critical assets to load before showing actual content
+        
         
         (function() {
             const skeletonScreen = document.getElementById('skeletonScreen');
@@ -1330,12 +1329,12 @@
                     resolve();
                 };
                 heroBgImage.onerror = () => {
-                    // Fallback: use dark gradient only
+                    
                     heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9))';
                     console.warn('Hero image failed to load, using fallback');
                     resolve();
                 };
-                // If image is already cached
+                
                 if (heroBgImage.complete) {
                     heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url("Hero.jpg")';
                     resolve();
@@ -1343,7 +1342,7 @@
             });
             loadingPromises.push(heroBgPromise);
             
-            // 2. Load About Section Image
+            
             const aboutImage = document.getElementById('aboutImage');
             if (aboutImage) {
                 const aboutImgPromise = new Promise((resolve) => {
@@ -1364,11 +1363,7 @@
                 loadingPromises.push(aboutImgPromise);
             }
             
-            // 3. Optional: Wait for any external fonts (they load via CSS, but we can add a small buffer)
-            // Fonts are already preconnected and loaded via CSS, but we add a tiny delay for smoothness
-            
-            // 4. Minimum display time for skeleton (prevents flashing on very fast connections)
-            // This ensures skeleton is visible for at least 400ms for UX
+           
             const minDisplayPromise = new Promise((resolve) => {
                 setTimeout(resolve, 400);
             });
@@ -1391,17 +1386,17 @@
                 // Show actual content with fade
                 actualContent.classList.add('visible');
                 
-                // Re-enable and refresh AOS animations
+                
                 AOS.init({ duration: 800, once: true, offset: 50, disable: false });
                 AOS.refresh();
                 
-                // Small delay to ensure any remaining animations trigger
+                
                 setTimeout(() => {
                     window.dispatchEvent(new Event('resize'));
                 }, 100);
             });
             
-            // Fallback: If something takes too long (over 5 seconds), force show content
+            
             setTimeout(() => {
                 if (!actualContent.classList.contains('visible')) {
                     skeletonScreen.classList.add('hidden');
