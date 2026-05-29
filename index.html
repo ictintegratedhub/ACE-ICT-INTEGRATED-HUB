@@ -313,12 +313,14 @@
             display: block;
         }
 
-        /* Hero Section */
+        /* Hero Section - Actual Content */
         #hero {
             height: 100vh;
             min-height: 700px;
-            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
-                        url('Hero.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75));
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,6 +328,7 @@
             position: relative;
         }
 
+        /* Hero background image will be set by JS after load */
         .hero-content {
             max-width: 900px;
             padding: 0 20px;
@@ -487,6 +490,15 @@
             border-radius: 8px;
         }
 
+        @media (max-width: 640px) {
+            .skeleton-section-title {
+                width: 250px;
+            }
+            .skeleton-section-subtitle {
+                width: 280px;
+            }
+        }
+
         /* Service Card Skeleton */
         .skeleton-service-grid {
             display: grid;
@@ -624,6 +636,12 @@
             border-radius: 50px;
         }
 
+        @media (max-width: 640px) {
+            .skeleton-stat {
+                width: 140px;
+            }
+        }
+
         /* CTA Skeleton */
         .skeleton-cta {
             text-align: center;
@@ -662,6 +680,15 @@
             border-radius: 50px;
         }
 
+        @media (max-width: 640px) {
+            .skeleton-cta-title {
+                width: 280px;
+            }
+            .skeleton-cta-text {
+                width: 300px;
+            }
+        }
+
         /* Content wrapper - initially hidden, then fades in */
         .content-wrapper {
             opacity: 0;
@@ -680,7 +707,7 @@
             display: none;
         }
 
-        /* Services Section */
+        /* Services Section - Actual Content */
         #services {
             padding: 80px 5%;
             background: var(--secondary-dark);
@@ -772,7 +799,7 @@
             transform: translateY(-2px);
         }
 
-        /* About Section */
+        /* About Section - Actual Content */
         #about {
             padding: 80px 5%;
             max-width: 1400px;
@@ -797,6 +824,12 @@
             border-radius: 24px;
             box-shadow: var(--shadow-lg);
             transition: var(--transition-slow);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .about-image img.loaded {
+            opacity: 1;
         }
 
         .about-image img:hover {
@@ -881,7 +914,7 @@
             transform: translateY(-2px);
         }
 
-        /* CTA Section */
+        /* CTA Section - Actual Content */
         .cta-section {
             text-align: center;
             padding: 80px 5%;
@@ -922,7 +955,7 @@
             gap: 15px;
         }
 
-        /* Footer */
+        /* Footer - Actual Content */
         footer {
             background: #0d0d0d;
             padding: 60px 5% 30px;
@@ -1013,7 +1046,7 @@
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Header (Always visible) -->
+    <!-- Header (Always visible for navigation) -->
     <header>
         <a href="index.html" class="logo">ICT Integrated Hub</a>
         
@@ -1054,7 +1087,7 @@
     </div>
     <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
 
-    <!-- SKELETON SCREEN (Loading state) -->
+    <!-- SKELETON SCREEN (Loading state - visible until content is ready) -->
     <div id="skeletonScreen" class="skeleton-screen">
         <!-- Hero Skeleton -->
         <div class="skeleton-hero">
@@ -1141,9 +1174,9 @@
         </footer>
     </div>
 
-    <!-- ACTUAL CONTENT (Hidden until loaded) -->
+    <!-- ACTUAL CONTENT (Hidden until all assets are loaded) -->
     <div id="actualContent" class="content-wrapper">
-        <!-- Hero Section -->
+        <!-- Hero Section - Background will be set by JS -->
         <section id="hero">
             <div class="hero-content">
                 <h1 data-aos="fade-up">Your One-Stop Tech Hub in Nigeria</h1>
@@ -1198,7 +1231,7 @@
         <section id="about">
             <div class="about-wrapper">
                 <div class="about-image" data-aos="fade-right">
-                    <img src="About-Us.jpeg" alt="ICT Integrated Hub professional team collaborating to provide tech solutions in Nigeria" loading="lazy">
+                    <img id="aboutImage" src="About-Us.jpeg" alt="ICT Integrated Hub professional team collaborating to provide tech solutions in Nigeria" loading="lazy">
                 </div>
                 
                 <div class="about-text" data-aos="fade-left">
@@ -1265,9 +1298,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 800, once: true, offset: 50 });
-
+        // Initialize AOS (but with delay to wait for content)
+        AOS.init({ duration: 800, once: true, offset: 50, disable: true });
+        
         // Mobile menu functions
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -1277,22 +1310,107 @@
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
 
-        // Skeleton Screen Effect - Simulate loading content
-        document.addEventListener('DOMContentLoaded', function() {
+        // PRODUCTION-READY SKELETON LOADING
+        // Wait for all critical assets to load before showing actual content
+        
+        (function() {
             const skeletonScreen = document.getElementById('skeletonScreen');
             const actualContent = document.getElementById('actualContent');
+            const heroSection = document.getElementById('hero');
+            
+            // Array to track all loading promises
+            const loadingPromises = [];
+            
+            // 1. Load Hero Background Image
+            const heroBgImage = new Image();
+            heroBgImage.src = 'Hero.jpg';
+            const heroBgPromise = new Promise((resolve) => {
+                heroBgImage.onload = () => {
+                    heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url("Hero.jpg")';
+                    resolve();
+                };
+                heroBgImage.onerror = () => {
+                    // Fallback: use dark gradient only
+                    heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9))';
+                    console.warn('Hero image failed to load, using fallback');
+                    resolve();
+                };
+                // If image is already cached
+                if (heroBgImage.complete) {
+                    heroSection.style.backgroundImage = 'linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url("Hero.jpg")';
+                    resolve();
+                }
+            });
+            loadingPromises.push(heroBgPromise);
+            
+            // 2. Load About Section Image
+            const aboutImage = document.getElementById('aboutImage');
+            if (aboutImage) {
+                const aboutImgPromise = new Promise((resolve) => {
+                    if (aboutImage.complete) {
+                        aboutImage.classList.add('loaded');
+                        resolve();
+                    } else {
+                        aboutImage.onload = () => {
+                            aboutImage.classList.add('loaded');
+                            resolve();
+                        };
+                        aboutImage.onerror = () => {
+                            console.warn('About image failed to load');
+                            resolve();
+                        };
+                    }
+                });
+                loadingPromises.push(aboutImgPromise);
+            }
+            
+            // 3. Optional: Wait for any external fonts (they load via CSS, but we can add a small buffer)
+            // Fonts are already preconnected and loaded via CSS, but we add a tiny delay for smoothness
+            
+            // 4. Minimum display time for skeleton (prevents flashing on very fast connections)
+            // This ensures skeleton is visible for at least 400ms for UX
+            const minDisplayPromise = new Promise((resolve) => {
+                setTimeout(resolve, 400);
+            });
+            loadingPromises.push(minDisplayPromise);
             
             
-            setTimeout(function() {
+            const windowLoadPromise = new Promise((resolve) => {
+                if (document.readyState === 'complete') {
+                    resolve();
+                } else {
+                    window.addEventListener('load', resolve);
+                }
+            });
+            loadingPromises.push(windowLoadPromise);
+            
+            // When everything is ready, show actual content
+            Promise.all(loadingPromises).then(() => {
+                // Hide skeleton with fade
                 skeletonScreen.classList.add('hidden');
+                // Show actual content with fade
                 actualContent.classList.add('visible');
                 
+                // Re-enable and refresh AOS animations
+                AOS.init({ duration: 800, once: true, offset: 50, disable: false });
+                AOS.refresh();
                 
-                setTimeout(function() {
-                    AOS.refresh();
+                // Small delay to ensure any remaining animations trigger
+                setTimeout(() => {
+                    window.dispatchEvent(new Event('resize'));
                 }, 100);
-            }, 2000); 
-        });
+            });
+            
+            // Fallback: If something takes too long (over 5 seconds), force show content
+            setTimeout(() => {
+                if (!actualContent.classList.contains('visible')) {
+                    skeletonScreen.classList.add('hidden');
+                    actualContent.classList.add('visible');
+                    AOS.init({ duration: 800, once: true, offset: 50, disable: false });
+                    AOS.refresh();
+                }
+            }, 5000);
+        })();
     </script>
 </body>
 </html>
