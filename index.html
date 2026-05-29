@@ -758,7 +758,7 @@
             display: grid;
             gap: 30px;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 0 auto 50px auto;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         }
 
@@ -814,6 +814,44 @@
         .btn-inquire:hover {
             background: var(--btn-secondary-hover);
             transform: translateY(-2px);
+        }
+
+        /* View All Services Button */
+        .view-all-services {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-view-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: var(--gold-accent);
+            padding: 14px 36px;
+            border: 2px solid var(--gold-accent);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-default);
+            text-decoration: none;
+        }
+
+        .btn-view-all i {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-view-all:hover {
+            background: var(--gold-accent);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+            gap: 16px;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-view-all:hover i {
+            transform: translateX(5px);
         }
 
         /* About Section - Actual Content */
@@ -1063,7 +1101,7 @@
     <!-- Skip to Content Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Header (Always visible for navigation) -->
+    <!-- Header -->
     <header>
         <a href="index.html" class="logo">ICT Integrated Hub</a>
         
@@ -1071,6 +1109,7 @@
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="services.html">All Services</a></li>
                 <li><a href="samples.html">Samples</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -1095,6 +1134,7 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="#services" onclick="toggleMobileMenu()">Services</a></li>
+            <li><a href="services.html" onclick="toggleMobileMenu()">All Services</a></li>
             <li><a href="samples.html">Samples</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
@@ -1102,34 +1142,4 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
-    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
-
-    <!-- SKELETON SCREEN (Loading state - visible until content is ready) -->
-    <div id="skeletonScreen" class="skeleton-screen">
-        <!-- Hero Skeleton -->
-        <div class="skeleton-hero">
-            <div class="skeleton-hero-content">
-                <div class="skeleton-title"></div>
-                <div class="skeleton-text"></div>
-                <div class="skeleton-button-group">
-                    <div class="skeleton-btn"></div>
-                    <div class="skeleton-btn"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Services Section Skeleton -->
-        <section style="padding: 100px 5%; background: var(--secondary-dark);">
-            <div class="skeleton-section-header">
-                <div class="skeleton-section-title"></div>
-                <div class="skeleton-section-subtitle"></div>
-            </div>
-            
-            <div class="skeleton-service-grid">
-                <div class="skeleton-service-card">
-                    <div class="skeleton-icon"></div>
-                    <div class="skeleton-service-title"></div>
-                    <div class="skeleton-service-desc"></div>
-                    <div class="skeleton-service-btn"></div>
-                </div>
-                <div class="skeleton-service
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenunew
