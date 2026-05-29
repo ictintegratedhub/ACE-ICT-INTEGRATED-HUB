@@ -73,7 +73,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo-text {
+        h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -119,13 +119,17 @@
             border-radius: 10px;
         }
 
+        /* Updated logo text styling to match samples.html */
         .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            font-family: 'Poppins', sans-serif;
         }
 
         .logo:hover .logo-icon {
@@ -311,7 +315,7 @@
         .btn-inquire { background: var(--btn-secondary); color: #fff; padding: 10px 24px; border: none; border-radius: 50px; cursor: pointer; transition: var(--transition-default); }
         .btn-inquire:hover { background: var(--btn-secondary-hover); transform: translateY(-2px); }
 
-        /* View All Services Button - Now links to services page */
+        /* View All Services Button */
         .view-all-services { text-align: center; margin-top: 20px; }
         .btn-view-all { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--gold-accent); padding: 14px 36px; border: 2px solid var(--gold-accent); border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition-default); cursor: pointer; }
         .btn-view-all:hover { background: var(--gold-accent); color: var(--primary-dark); transform: translateY(-3px); gap: 16px; box-shadow: 0 10px 25px rgba(212,175,55,0.3); }
@@ -346,7 +350,7 @@
         .copyright { color: var(--text-muted); font-size: 0.85rem; margin-top: 30px; }
 
         @media (max-width: 640px) {
-            .logo-text { font-size: 1.1rem; }
+            .logo-text { font-size: 1.1rem; letter-spacing: -0.3px; }
             .logo-icon { width: 32px; height: 32px; }
         }
     </style>
@@ -356,7 +360,7 @@
     <header>
         <a href="index.html" class="logo">
             <div class="logo-icon">
-                <img src="LOGOO.png" alt="ICT Integrated Hub Logo">
+            <img src="your-logo.png" alt="ICT Integrated Hub Logo">    
             </div>
             <span class="logo-text">ICT Integrated Hub</span>
         </a>
