@@ -60,7 +60,7 @@
         "name": "ICT Integrated Hub",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ictintegratedhub.site/LOGOO.png"
+          "url": "https://ictintegratedhub.site/LOGO.png"
         },
         "contactPoint": [
           {
@@ -107,7 +107,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo {
+        h1, h2, h3, h4, .logo-text {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -126,7 +126,7 @@
             background: var(--gold-light);
         }
 
-        /* Header */
+        /* Header with Logo Image */
         header {
             position: sticky;
             top: 0;
@@ -142,18 +142,46 @@
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: var(--transition-default);
         }
 
-        .logo:hover {
-            opacity: 0.9;
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.05);
+        }
+
+        .logo:hover .logo-text {
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--gold-accent) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         nav ul {
@@ -307,10 +335,12 @@
         .breadcrumbs a {
             color: var(--gold-accent);
             text-decoration: none;
+            transition: var(--transition-default);
         }
 
         .breadcrumbs a:hover {
             text-decoration: underline;
+            color: var(--gold-light);
         }
 
         .breadcrumbs span {
@@ -329,6 +359,25 @@
             padding: 60px 5% 50px;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .careers-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation: rotateBg 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .careers-hero h1 {
@@ -338,6 +387,8 @@
             color: transparent;
             margin-bottom: 20px;
             font-size: clamp(2rem, 6vw, 3.5rem);
+            position: relative;
+            z-index: 2;
         }
 
         .careers-hero p {
@@ -345,6 +396,8 @@
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         @media (min-width: 992px) {
@@ -380,6 +433,13 @@
             border-radius: 24px;
             padding: 40px 30px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .application-form-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .section-title {
@@ -394,6 +454,11 @@
         .section-title i {
             font-size: 1.8rem;
             color: var(--gold-accent);
+            transition: var(--transition-default);
+        }
+
+        .application-form-section:hover .section-title i {
+            transform: scale(1.1);
         }
 
         .section-title h2 {
@@ -427,6 +492,12 @@
             transition: var(--transition-default);
         }
 
+        .form-group input:hover,
+        .form-group select:hover,
+        .form-group textarea:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
@@ -458,9 +529,10 @@
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             gap: 15px;
+            background: var(--gold-light);
         }
 
         .form-message {
@@ -492,14 +564,14 @@
             gap: 30px;
         }
 
-        /* WhatsApp Card (Now Email Card) */
+        /* Email Card */
         .email-card {
             background: var(--secondary-dark);
             border-radius: 20px;
             padding: 30px;
             text-align: center;
             border: 1px solid rgba(212, 175, 55, 0.2);
-            transition: var(--transition-default);
+            transition: var(--transition-slow);
         }
 
         .email-card:hover {
@@ -512,6 +584,11 @@
             font-size: 2.5rem;
             color: var(--gold-accent);
             margin-bottom: 15px;
+            transition: var(--transition-default);
+        }
+
+        .email-card:hover i {
+            transform: scale(1.1);
         }
 
         .email-card h3 {
@@ -536,8 +613,9 @@
         }
 
         .btn-email:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            background: var(--gold-light);
         }
 
         /* Why Join Us Card */
@@ -546,6 +624,13 @@
             border-radius: 20px;
             padding: 30px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .why-join-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .why-join-card h3 {
@@ -555,6 +640,14 @@
             color: var(--gold-accent);
             margin-bottom: 20px;
             font-size: 1.4rem;
+        }
+
+        .why-join-card h3 i {
+            transition: var(--transition-default);
+        }
+
+        .why-join-card:hover h3 i {
+            transform: rotate(10deg);
         }
 
         .benefits-list {
@@ -568,11 +661,22 @@
             align-items: center;
             gap: 12px;
             color: var(--text-light);
+            transition: var(--transition-default);
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(5px);
+            color: var(--gold-accent);
         }
 
         .benefits-list li i {
             color: var(--gold-accent);
             font-size: 1rem;
+            transition: var(--transition-default);
+        }
+
+        .benefits-list li:hover i {
+            transform: scale(1.1);
         }
 
         .benefits-list li strong {
@@ -585,6 +689,13 @@
             border-radius: 20px;
             padding: 30px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .contact-card h3 {
@@ -596,6 +707,14 @@
             font-size: 1.4rem;
         }
 
+        .contact-card h3 i {
+            transition: var(--transition-default);
+        }
+
+        .contact-card:hover h3 i {
+            transform: rotate(10deg);
+        }
+
         .contact-details {
             margin: 20px 0;
         }
@@ -605,6 +724,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            transition: var(--transition-default);
+        }
+
+        .contact-details p:hover {
+            transform: translateX(5px);
         }
 
         .contact-details a {
@@ -620,6 +744,11 @@
         .contact-details i {
             color: var(--gold-accent);
             width: 25px;
+            transition: var(--transition-default);
+        }
+
+        .contact-details p:hover i {
+            transform: scale(1.1);
         }
 
         /* Footer */
@@ -657,6 +786,7 @@
 
         .footer-links a:hover {
             color: var(--gold-accent);
+            transform: translateY(-2px);
         }
 
         .footer-social {
@@ -704,6 +834,16 @@
                 padding: 60px 8% 30px;
             }
         }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -713,12 +853,17 @@
 
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">ICT Integrated Hub</a>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="LOGO.png" alt="ICT Integrated Hub Logo">
+            </div>
+            <span class="logo-text">ICT Integrated Hub</span>
+        </a>
         
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="samples.html">Samples</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -742,7 +887,7 @@
         <div class="close-menu" onclick="toggleMobileMenu()">&times;</div>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="samples.html">Samples</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
@@ -865,9 +1010,9 @@
             <a href="mailto:ictintegratedhub@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
 
-        <<div class="footer-links">
+        <div class="footer-links">
             <a href="index.html">Home</a>
-            <a href="index.html#services">Services</a>
+            <a href="services.html">Services</a>
             <a href="samples.html">Samples</a>
             <a href="blog.html">Blog</a>
             <a href="about.html">About Us</a>
