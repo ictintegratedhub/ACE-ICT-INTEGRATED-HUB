@@ -96,6 +96,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            position: relative;
         }
 
         .logo-icon {
@@ -119,21 +120,37 @@
             border-radius: 10px;
         }
 
-        /* Updated logo text styling to match samples.html */
+        /* Animated Logo Text with Mouse-Tracking Gradient */
         .logo-text {
             font-size: 1.6rem;
             font-weight: 800;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
             background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            font-family: 'Poppins', sans-serif;
+            transition: all 0.1s ease-out;
+        }
+
+        /* Hover effect - smooth transition */
+        .logo:hover .logo-text {
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                        #ffffff 0%, 
+                        var(--gold-accent) 40%, 
+                        var(--gold-light) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .logo:hover .logo-icon {
             transform: scale(1.05);
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                        var(--gold-light), 
+                        var(--gold-accent));
         }
 
         nav ul {
@@ -315,7 +332,6 @@
         .btn-inquire { background: var(--btn-secondary); color: #fff; padding: 10px 24px; border: none; border-radius: 50px; cursor: pointer; transition: var(--transition-default); }
         .btn-inquire:hover { background: var(--btn-secondary-hover); transform: translateY(-2px); }
 
-        /* View All Services Button */
         .view-all-services { text-align: center; margin-top: 20px; }
         .btn-view-all { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--gold-accent); padding: 14px 36px; border: 2px solid var(--gold-accent); border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition-default); cursor: pointer; }
         .btn-view-all:hover { background: var(--gold-accent); color: var(--primary-dark); transform: translateY(-3px); gap: 16px; box-shadow: 0 10px 25px rgba(212,175,55,0.3); }
@@ -358,9 +374,9 @@
 <body>
 
     <header>
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo" id="logoLink">
             <div class="logo-icon">
-            <img src="LOGO.png" alt="ICT Integrated Hub Logo">    
+                <i class="fas fa-microchip"></i>
             </div>
             <span class="logo-text">ICT Integrated Hub</span>
         </a>
@@ -559,6 +575,28 @@
                 AOS.refresh();
             }, 2000);
         });
+
+        // MOUSE-TRACKING GRADIENT ANIMATION FOR LOGO
+        const logo = document.getElementById('logoLink');
+        
+        if (logo) {
+            logo.addEventListener('mousemove', function(e) {
+                // Get mouse position relative to the logo element
+                const rect = logo.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                // Set CSS custom properties for the gradient position
+                logo.style.setProperty('--mouse-x', `${x}%`);
+                logo.style.setProperty('--mouse-y', `${y}%`);
+            });
+            
+            // Optional: Reset gradient on mouse leave (smooth return to original)
+            logo.addEventListener('mouseleave', function() {
+                logo.style.setProperty('--mouse-x', '50%');
+                logo.style.setProperty('--mouse-y', '50%');
+            });
+        }
     </script>
 </body>
 </html>
