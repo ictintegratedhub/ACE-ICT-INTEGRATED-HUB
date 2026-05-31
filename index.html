@@ -5,37 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- Primary SEO Meta Tags -->
-    <title>ICT Integrated Hub | Your One-Stop Tech Hub in Nigeria - JAMB, NIN, BVN, Consultancy & Branding</title>
-    <meta name="title" content="ICT Integrated Hub | Your One-Stop Tech Hub in Nigeria">
-    <meta name="description" content="ICT Integrated Hub is your trusted Nigerian tech hub for JAMB registration, Post-UTME, NIN/BVN services, tech consultancy, and branding. Fast, reliable & affordable solutions since 2024.">
-    <meta name="keywords" content="ICT hub Nigeria, JAMB registration, NIN slip, BVN printout, tech consultancy, branding services, web development Nigeria">
-    <meta name="author" content="ICT Integrated Hub">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://ictintegratedhub.site/index.html">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ictintegratedhub.site/">
-    <meta property="og:title" content="ICT Integrated Hub | Your One-Stop Tech Hub in Nigeria">
-    <meta property="og:description" content="Trusted Nigerian tech hub for JAMB, NIN, BVN, consultancy, and branding. Fast, reliable & affordable solutions.">
-    <meta property="og:image" content="https://ictintegratedhub.site/OG.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="ICT Integrated Hub">
-    <meta property="og:locale" content="en_NG">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://ictintegratedhub.site/">
-    <meta name="twitter:title" content="ICT Integrated Hub | Your One-Stop Tech Hub in Nigeria">
-    <meta name="twitter:description" content="Trusted Nigerian tech hub for JAMB, NIN, BVN, consultancy, and branding.">
-    <meta name="twitter:image" content="https://ictintegratedhub.site/OG.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" href="Favicon.jpg" type="image/x-icon">
-    <link rel="apple-touch-icon" href="Favicon.jpg">
+    <title>ICT Integrated Hub | Your One-Stop Tech Hub in Nigeria</title>
+    <meta name="description" content="ICT Integrated Hub is your trusted Nigerian tech hub for JAMB registration, Post-UTME, NIN/BVN services, tech consultancy, and branding.">
+    <meta name="keywords" content="ICT hub Nigeria, JAMB registration, NIN slip, BVN printout, tech consultancy, branding services">
     
     <!-- Fonts & Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -43,12 +15,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary-dark: #1a1a1a;
             --secondary-dark: #2c1e0f;
@@ -56,228 +22,125 @@
             --gold-light: #e4c04a;
             --btn-color: #c2410c;
             --btn-hover: #ea580c;
-            --btn-secondary: #475569;
-            --btn-secondary-hover: #64748b;
-            --text-light: #f5f5f5;
-            --text-muted: #b0b0b0;
             --transition-default: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            --skeleton-gradient: linear-gradient(110deg, #2a2a2a 8%, #3a3a3a 18%, #2a2a2a 33%);
-            --skeleton-size: 200% 100%;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
             background: var(--primary-dark);
-            color: var(--text-light);
+            color: #f5f5f5;
             overflow-x: hidden;
         }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
 
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Header with Logo */
+        /* Header */
         header {
-            position: sticky;
-            top: 0;
-            background: rgba(26, 26, 26, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky; top: 0; background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(12px); z-index: 1000; padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
         }
-
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            position: relative;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
+            font-size: 1.6rem; font-weight: 700;
             background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: var(--primary-dark);
-            transition: var(--transition-default);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
         }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-
-        /* Animated Logo Text with Mouse-Tracking Gradient */
-        .logo-text {
-            font-size: 1.6rem;
-            font-weight: 800;
-            text-decoration: none;
-            letter-spacing: -0.5px;
-            font-family: 'Poppins', sans-serif;
-            position: relative;
-            background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            transition: all 0.1s ease-out;
-        }
-
-        /* Hover effect - smooth transition */
-        .logo:hover .logo-text {
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                        #ffffff 0%, 
-                        var(--gold-accent) 40%, 
-                        var(--gold-light) 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .logo:hover .logo-icon {
-            transform: scale(1.05);
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                        var(--gold-light), 
-                        var(--gold-accent));
-        }
-
-        nav ul {
-            display: none;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition-default);
-            position: relative;
-        }
-
+        nav ul { display: none; list-style: none; gap: 30px; }
+        nav ul li a { color: #f5f5f5; text-decoration: none; position: relative; }
         nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-accent);
+            content: ''; position: absolute; bottom: -6px; left: 0;
+            width: 0; height: 2px; background: var(--gold-accent);
             transition: width 0.3s ease;
         }
-
-        nav ul li a:hover::after,
-        nav ul li a.active::after {
-            width: 100%;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--gold-accent);
-        }
-
-        .header-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .header-icons a {
-            color: var(--text-light);
-            font-size: 1.2rem;
-            transition: var(--transition-default);
-        }
-
-        .header-icons a:hover {
-            color: var(--gold-accent);
-            transform: translateY(-2px);
-        }
-
-        .hamburger {
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: var(--gold-accent);
-            cursor: pointer;
-            display: block;
-        }
+        nav ul li a:hover::after { width: 100%; }
+        .hamburger { font-size: 1.8rem; background: none; border: none; color: var(--gold-accent); cursor: pointer; }
 
         @media (min-width: 992px) {
             nav ul { display: flex; }
             .hamburger { display: none; }
-            header { padding: 15px 8%; }
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 350px;
-            height: 100vh;
-            background: var(--primary-dark);
-            z-index: 2000;
-            padding: 80px 30px;
-            transition: 0.3s ease;
-            border-left: 2px solid var(--gold-accent);
-        }
-
-        .mobile-menu.active { right: 0; }
-        .mobile-menu ul { list-style: none; }
-        .mobile-menu ul li { margin: 25px 0; }
-        .mobile-menu ul li a { color: var(--text-light); text-decoration: none; font-size: 1.3rem; transition: var(--transition-default); }
-        .mobile-menu ul li a:hover { color: var(--gold-accent); padding-left: 10px; }
-        .close-menu { position: absolute; top: 20px; right: 25px; font-size: 2rem; color: var(--gold-accent); cursor: pointer; }
-        .menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1999; display: none; }
-        .menu-overlay.active { display: block; }
-
-        /* Hero Section */
+        /* HERO - Framer-style Parallax */
         #hero {
-            height: 100vh;
-            min-height: 700px;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url('Hero.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 100vh; min-height: 700px;
+            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
             text-align: center;
         }
 
-        .hero-content { max-width: 900px; padding: 0 20px; }
-        .hero-content h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 20px; }
-        .hero-content p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 40px; color: #ddd; }
+        .hero-layer {
+            position: absolute; inset: 0;
+            background-size: cover; background-position: center;
+            will-change: transform;
+        }
+        #layer1 { z-index: 1; background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url('Hero.jpg'); }
+        #layer2 { z-index: 2; background-image: url('subtle-tech-pattern.png'); opacity: 0.4; mix-blend-mode: overlay; }
 
-        .hero-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .btn-primary, .btn-secondary { padding: 14px 32px; border-radius: 50px; font-weight: 600; cursor: pointer; transition: var(--transition-default); }
-        .btn-primary { background: var(--btn-color); color: white; border: none; }
-        .btn-primary:hover { background: var(--btn-hover); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(194,65,12,0.3); }
-        .btn-secondary { background: transparent; color: var(--gold-accent); border: 2px solid var(--gold-accent); }
-        .btn-secondary:hover { background: var(--gold-accent); color: var(--primary-dark); transform: translateY(-4px); }
+        .hero-content {
+            z-index: 10; position: relative; max-width: 900px; padding: 0 20px;
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: 1.25rem; max-width: 700px; margin: 0 auto 40px; color: #ddd;
+        }
 
-        /* Skeleton Screen */
-        .skeleton-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 9999;
-            background: var(--primary-dark);
+        .hero-buttons {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;
+        }
+        .btn-primary, .btn-secondary {
+            padding: 14px 32px; border-radius: 50px; font-weight: 600;
+            cursor: pointer; transition: var(--transition-default);
+        }
+        .btn-primary {
+            background: var(--btn-color); color: white; border: none;
+        }
+        .btn-primary:hover {
+            background: var(--btn-hover); transform: translateY(-4px) scale(1.05);
+        }
+        .btn-secondary {
+            background: transparent; color: var(--gold-accent);
+            border: 2px solid var(--gold-accent);
+        }
+        .btn-secondary:hover {
+            background: var(--gold-accent); color: var(--primary-dark);
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        .floating-icon {
+            position: absolute; font-size: 2.8rem; opacity: 0.12;
+            z-index: 3; pointer-events: none; will-change: transform;
         }
         .skeleton-screen.hidden { display: none; }
 
+<<<<<<< HEAD
+        /* Services & Other Sections */
+        #services { padding: 100px 5%; background: var(--secondary-dark); }
+        .service-grid {
+            display: grid; gap: 30px; max-width: 1400px; margin: 0 auto;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        .service-card {
+            background: var(--primary-dark); padding: 40px 25px;
+            border-radius: 20px; text-align: center; transition: var(--transition-slow);
+            border: 1px solid rgba(212,175,55,0.2);
+        }
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .service-card i {
+            font-size: 3.2rem; color: var(--gold-accent);
+            transition: all 0.4s ease;
+        }
+        .service-card:hover i { transform: scale(1.15) rotate(8deg); }
+
+        /* General */
+        [data-aos] { transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1); }
+=======
         @keyframes skeleton-loading {
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
@@ -369,11 +232,19 @@
             .logo-text { font-size: 1.1rem; letter-spacing: -0.3px; }
             .logo-icon { width: 32px; height: 32px; }
         }
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </style>
 </head>
 <body>
 
+<<<<<<< HEAD
+    <!-- Header -->
+=======
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     <header>
+<<<<<<< HEAD
+        <a href="index.html" class="logo">ICT Integrated Hub</a>
+=======
         <a href="index.html" class="logo" id="logoLink">
             <div class="logo-icon">
                 
@@ -381,6 +252,7 @@
             </div>
             <span class="logo-text">ICT Integrated Hub</span>
         </a>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -388,17 +260,33 @@
                 <li><a href="samples.html">Samples</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="careers.html">Careers</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+<<<<<<< HEAD
+        <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
+=======
         <div class="header-icons">
             <a href="tel:+2348156144699"><i class="fas fa-phone"></i></a>
             <a href="https://wa.me/2348156144699" target="_blank"><i class="fab fa-whatsapp"></i></a>
         </div>
         <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </header>
 
+<<<<<<< HEAD
+    <!-- HERO WITH PARALLAX -->
+    <section id="hero">
+        <div class="hero-layer" id="layer1"></div>
+        <div class="hero-layer" id="layer2"></div>
+        
+        <div class="hero-content">
+            <h1>Your One-Stop Tech Hub in Nigeria</h1>
+            <p>Fast, reliable & affordable solutions for JAMB, NIN, BVN, Consultancy & Branding</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="window.location.href='contact.html'">Get Started Today</button>
+                <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">Explore Services</button>
+=======
     <div class="mobile-menu" id="mobileMenu">
         <div class="close-menu" onclick="toggleMobileMenu()">&times;</div>
         <ul>
@@ -423,9 +311,17 @@
                     <span class="skeleton-btn"></span>
                     <span class="skeleton-btn"></span>
                 </div>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
         </div>
 
+<<<<<<< HEAD
+        <!-- Floating elements -->
+        <div class="floating-icon" id="float1" style="top: 25%; left: 12%;">🎓</div>
+        <div class="floating-icon" id="float2" style="bottom: 30%; right: 15%;">🛡️</div>
+        <div class="floating-icon" id="float3" style="top: 55%; right: 18%;">📊</div>
+    </section>
+=======
         <section style="padding: 100px 5%; background: var(--secondary-dark);">
             <div class="skeleton-section-header">
                 <div class="skeleton-section-title"></div>
@@ -438,7 +334,15 @@
                 <div class="skeleton-service-card"><div class="skeleton-icon"></div><div class="skeleton-service-title"></div><div class="skeleton-service-desc"></div><div class="skeleton-service-btn"></div></div>
             </div>
         </section>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
+<<<<<<< HEAD
+    <!-- Services -->
+    <section id="services">
+        <div class="section-header" data-aos="fade-up">
+            <h2>Our Services</h2>
+            <p>Comprehensive tech solutions tailored for you</p>
+=======
         <section style="padding: 100px 5%; max-width: 1400px; margin: 0 auto;">
             <div class="skeleton-about-wrapper">
                 <div class="skeleton-about-image"></div>
@@ -455,7 +359,22 @@
             <div class="skeleton-cta-title"></div>
             <div class="skeleton-cta-text"></div>
             <div class="skeleton-cta-btn"></div>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         </div>
+<<<<<<< HEAD
+        <div class="service-grid">
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Education Support</h3>
+                <p>JAMB, Post-UTME, WAEC, admission guidance</p>
+                <button class="btn-inquire">Inquire Now</button>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-id-card"></i>
+                <h3>Identity Services</h3>
+                <p>NIN, BVN, National ID services</p>
+                <button class="btn-inquire">Inquire Now</button>
+=======
 
         <footer><div class="footer-logo">ICT Integrated Hub</div><div class="copyright">© 2026 ICT Integrated Hub</div></footer>
     </div>
@@ -470,14 +389,30 @@
                     <button class="btn-primary" onclick="window.location.href='contact.html'">Get Started Today</button>
                     <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">Explore Services</button>
                 </div>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
+<<<<<<< HEAD
+            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-cogs"></i>
+                <h3>Tech Consultancy</h3>
+                <p>Systems, networks & career guidance</p>
+                <button class="btn-inquire">Inquire Now</button>
+=======
         </section>
 
         <section id="services">
             <div class="section-header" data-aos="fade-up">
                 <h2>Our Services</h2>
                 <p>Comprehensive tech solutions tailored to meet your needs</p>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
+<<<<<<< HEAD
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-palette"></i>
+                <h3>Branding & Design</h3>
+                <p>Logo, web development & digital branding</p>
+                <button class="btn-inquire">Inquire Now</button>
+=======
             <div class="service-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="fas fa-graduation-cap"></i>
@@ -503,14 +438,24 @@
                     <p>Logo design, e-flyers, company branding, web development, and data analysis.</p>
                     <button class="btn-inquire" onclick="window.location.href='contact.html'">Inquire Now</button>
                 </div>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
+<<<<<<< HEAD
+        </div>
+    </section>
+=======
             <div class="view-all-services">
                 <a href="services.html" class="btn-view-all">
                     View All Services <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </section>
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
+<<<<<<< HEAD
+     <!-- About Section -->
+=======
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         <section id="about">
             <div class="about-wrapper">
                 <div class="about-image" data-aos="fade-right">
@@ -555,6 +500,9 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
+<<<<<<< HEAD
+        AOS.init({ duration: 900, once: true, offset: 80 });
+=======
         // Mobile menu toggle
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -563,7 +511,78 @@
             overlay.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
+<<<<<<< HEAD
+        // === OPTIMIZED FRAMER PARALLAX ===
+        function initHeroParallax() {
+            const hero = document.getElementById('hero');
+            const layer1 = document.getElementById('layer1');
+            const layer2 = document.getElementById('layer2');
+            const float1 = document.getElementById('float1');
+            const float2 = document.getElementById('float2');
+            const float3 = document.getElementById('float3');
+
+            let targetX = 0, targetY = 0;
+            let currentX = 0, currentY = 0;
+            let rafId = null;
+            let ticking = false;
+
+            const sensitivity = 28;
+
+            function lerp(a, b, t) { return a + (b - a) * t; }
+
+            function update() {
+                currentX = lerp(currentX, targetX, 0.12);
+                currentY = lerp(currentY, targetY, 0.12);
+
+                layer1.style.transform = `translate3d(${currentX * 0.55}px, ${currentY * 0.55}px, 0)`;
+                if (layer2) layer2.style.transform = `translate3d(${currentX * 1.15}px, ${currentY * 1.15}px, 0)`;
+
+                if (float1) float1.style.transform = `translate(${currentX * 2}px, ${currentY * 1.8}px)`;
+                if (float2) float2.style.transform = `translate(${currentX * -1.6}px, ${currentY * -2}px)`;
+                if (float3) float3.style.transform = `translate(${currentX * 1.4}px, ${currentY * 1.9}px)`;
+
+                if (Math.abs(currentX - targetX) > 0.5 || Math.abs(currentY - targetY) > 0.5) {
+                    rafId = requestAnimationFrame(update);
+                } else {
+                    ticking = false;
+                }
+            }
+
+            hero.addEventListener('mousemove', (e) => {
+                if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+                
+                const rect = hero.getBoundingClientRect();
+                targetX = ((e.clientX - rect.left) - rect.width / 2) / rect.width * sensitivity;
+                targetY = ((e.clientY - rect.top) - rect.height / 2) / rect.height * sensitivity;
+
+                if (!ticking) {
+                    ticking = true;
+                    rafId = requestAnimationFrame(update);
+                }
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                targetX = 0; targetY = 0;
+                if (!ticking) {
+                    ticking = true;
+                    rafId = requestAnimationFrame(update);
+                }
+            });
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            initHeroParallax();
+            AOS.refresh();
+        });
+
+        // Mobile menu function (add your full toggleMobileMenu here)
+        function toggleMobileMenu() {
+            alert("Mobile menu functionality - implement as needed");
+        }
+=======
         // Skeleton screen - hides after 2 seconds
         document.addEventListener('DOMContentLoaded', function() {
             const skeletonScreen = document.getElementById('skeletonScreen');
@@ -598,6 +617,7 @@
                 logo.style.setProperty('--mouse-y', '50%');
             });
         }
+>>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </script>
 </body>
 </html>
