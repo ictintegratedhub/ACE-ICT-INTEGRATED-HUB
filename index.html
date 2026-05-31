@@ -116,7 +116,6 @@
         }
         .skeleton-screen.hidden { display: none; }
 
-<<<<<<< HEAD
         /* Services & Other Sections */
         #services { padding: 100px 5%; background: var(--secondary-dark); }
         .service-grid {
@@ -140,119 +139,13 @@
 
         /* General */
         [data-aos] { transition: all 0.9s cubic-bezier(0.25, 0.1, 0.25, 1); }
-=======
-        @keyframes skeleton-loading {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .skeleton-hero { height: 100vh; min-height: 700px; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)); display: flex; align-items: center; justify-content: center; }
-        .skeleton-title { width: 70%; height: 70px; margin: 0 auto 20px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 12px; }
-        .skeleton-text { width: 50%; height: 30px; margin: 0 auto 40px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-btn { width: 160px; height: 52px; border-radius: 50px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; display: inline-block; margin: 0 10px; }
-
-        .skeleton-section-header { text-align: center; margin-bottom: 60px; }
-        .skeleton-section-title { width: 300px; height: 48px; margin: 0 auto 15px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-section-subtitle { width: 500px; height: 24px; margin: 0 auto; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-
-        .skeleton-service-grid { display: grid; gap: 30px; max-width: 1400px; margin: 0 auto; grid-template-columns: 1fr; }
-        @media (min-width: 640px) { .skeleton-service-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .skeleton-service-grid { grid-template-columns: repeat(4, 1fr); } }
-        
-        .skeleton-service-card { background: var(--primary-dark); padding: 40px 25px; border-radius: 20px; text-align: center; border: 1px solid rgba(212,175,55,0.2); }
-        .skeleton-icon { width: 52px; height: 52px; margin: 0 auto 20px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 12px; }
-        .skeleton-service-title { width: 80%; height: 28px; margin: 0 auto 15px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 6px; }
-        .skeleton-service-desc { width: 90%; height: 60px; margin: 0 auto 20px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 6px; }
-        .skeleton-service-btn { width: 120px; height: 40px; margin: 0 auto; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 50px; }
-
-        .skeleton-about-wrapper { display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
-        .skeleton-about-image { flex: 1; min-width: 300px; height: 400px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 24px; }
-        .skeleton-about-title { width: 80%; height: 56px; margin-bottom: 30px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-about-paragraph { width: 100%; height: 80px; margin-bottom: 20px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-quote { width: 100%; height: 100px; margin: 30px 0; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 20px; }
-        .skeleton-stat { width: 180px; height: 45px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 50px; display: inline-block; margin: 5px; }
-
-        .skeleton-cta { text-align: center; padding: 100px 5%; background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark)); }
-        .skeleton-cta-title { width: 400px; height: 48px; margin: 0 auto 20px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-cta-text { width: 600px; height: 24px; margin: 0 auto 30px; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 8px; }
-        .skeleton-cta-btn { width: 200px; height: 56px; margin: 0 auto; background: var(--skeleton-gradient); background-size: var(--skeleton-size); animation: skeleton-loading 1.2s ease-in-out infinite; border-radius: 50px; }
-
-        /* Actual Content */
-        .content-wrapper { opacity: 0; transition: opacity 0.5s ease; }
-        .content-wrapper.visible { opacity: 1; }
-
-        #services { padding: 100px 5%; background: var(--secondary-dark); }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header h2 { font-size: clamp(2rem, 5vw, 2.8rem); }
-        .section-header p { color: var(--text-muted); max-width: 700px; margin: 0 auto; }
-        .service-grid { display: grid; gap: 30px; max-width: 1400px; margin: 0 auto 50px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        .service-card { background: var(--primary-dark); padding: 40px 25px; border-radius: 20px; text-align: center; transition: var(--transition-slow); border: 1px solid rgba(212,175,55,0.2); }
-        .service-card:hover { transform: translateY(-12px); box-shadow: 0 20px 40px rgba(0,0,0,0.5); border-color: rgba(212,175,55,0.5); }
-        .service-card i { font-size: 3.2rem; color: var(--gold-accent); margin-bottom: 20px; transition: all 0.4s ease; }
-        .service-card:hover i { transform: scale(1.15) rotate(8deg); }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .service-card p { color: var(--text-muted); margin-bottom: 20px; }
-        .btn-inquire { background: var(--btn-secondary); color: #fff; padding: 10px 24px; border: none; border-radius: 50px; cursor: pointer; transition: var(--transition-default); }
-        .btn-inquire:hover { background: var(--btn-secondary-hover); transform: translateY(-2px); }
-
-        .view-all-services { text-align: center; margin-top: 20px; }
-        .btn-view-all { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--gold-accent); padding: 14px 36px; border: 2px solid var(--gold-accent); border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition-default); cursor: pointer; }
-        .btn-view-all:hover { background: var(--gold-accent); color: var(--primary-dark); transform: translateY(-3px); gap: 16px; box-shadow: 0 10px 25px rgba(212,175,55,0.3); }
-        .btn-view-all:hover i { transform: translateX(5px); }
-
-        #about { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .about-wrapper { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; }
-        .about-image { flex: 1; min-width: 300px; }
-        .about-image img { width: 100%; border-radius: 24px; box-shadow: 0 15px 40px rgba(0,0,0,0.5); transition: var(--transition-slow); }
-        .about-image img:hover { transform: scale(1.02); }
-        .about-text { flex: 1; min-width: 300px; }
-        .about-text h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 30px; }
-        .about-text h2 span { color: var(--gold-accent); }
-        .about-text p { color: var(--text-muted); line-height: 1.8; margin-bottom: 20px; }
-        .quote-card { background: var(--secondary-dark); padding: 30px; border-radius: 20px; margin: 30px 0; border: 1px solid rgba(212,175,55,0.2); position: relative; }
-        .quote-card p { color: var(--gold-accent); font-style: italic; font-size: 1.1rem; }
-        .stats-wrapper { display: flex; flex-wrap: wrap; gap: 20px; margin: 30px 0; }
-        .stat-badge { background: var(--secondary-dark); color: var(--gold-accent); padding: 12px 24px; border-radius: 50px; border: 1px solid var(--gold-accent); transition: var(--transition-default); }
-        .stat-badge:hover { background: var(--gold-accent); color: var(--primary-dark); transform: translateY(-2px); }
-
-        .cta-section { text-align: center; padding: 100px 5%; background: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark)); }
-        .btn-cta { background: var(--btn-color); color: white; padding: 16px 48px; border: none; border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: var(--transition-default); }
-        .btn-cta:hover { transform: translateY(-4px); background: var(--btn-hover); gap: 15px; }
-        .btn-cta i { transition: transform 0.3s ease; }
-        .btn-cta:hover i { transform: translateX(5px); }
-
-        footer { background: #0d0d0d; padding: 60px 5% 30px; text-align: center; border-top: 1px solid rgba(212,175,55,0.2); }
-        .footer-logo { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, var(--gold-accent), var(--gold-light)); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 20px; }
-        .footer-social { margin: 30px 0; }
-        .footer-social a { color: var(--text-muted); font-size: 1.3rem; margin: 0 10px; transition: var(--transition-default); display: inline-block; }
-        .footer-social a:hover { color: var(--gold-accent); transform: translateY(-3px); }
-        .copyright { color: var(--text-muted); font-size: 0.85rem; margin-top: 30px; }
-
-        @media (max-width: 640px) {
-            .logo-text { font-size: 1.1rem; letter-spacing: -0.3px; }
-            .logo-icon { width: 32px; height: 32px; }
-        }
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </style>
 </head>
 <body>
 
-<<<<<<< HEAD
     <!-- Header -->
-=======
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     <header>
-<<<<<<< HEAD
         <a href="index.html" class="logo">ICT Integrated Hub</a>
-=======
-        <a href="index.html" class="logo" id="logoLink">
-            <div class="logo-icon">
-                
-                <img src="LOGO.png" alt="ICT Integrated Hub Logo">
-            </div>
-            <span class="logo-text">ICT Integrated Hub</span>
-        </a>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -263,18 +156,9 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-<<<<<<< HEAD
         <button class="hamburger" onclick="toggleMobileMenu()">☰</button>
-=======
-        <div class="header-icons">
-            <a href="tel:+2348156144699"><i class="fas fa-phone"></i></a>
-            <a href="https://wa.me/2348156144699" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        <button class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></button>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </header>
 
-<<<<<<< HEAD
     <!-- HERO WITH PARALLAX -->
     <section id="hero">
         <div class="hero-layer" id="layer1"></div>
@@ -286,82 +170,21 @@
             <div class="hero-buttons">
                 <button class="btn-primary" onclick="window.location.href='contact.html'">Get Started Today</button>
                 <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">Explore Services</button>
-=======
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="close-menu" onclick="toggleMobileMenu()">&times;</div>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html" onclick="toggleMobileMenu()">Services</a></li>
-            <li><a href="samples.html">Samples</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="careers.html">Careers</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
-    <div class="menu-overlay" id="menuOverlay" onclick="toggleMobileMenu()"></div>
-
-    <!-- SKELETON SCREEN -->
-    <div id="skeletonScreen" class="skeleton-screen">
-        <div class="skeleton-hero">
-            <div class="skeleton-hero-content">
-                <div class="skeleton-title"></div>
-                <div class="skeleton-text"></div>
-                <div>
-                    <span class="skeleton-btn"></span>
-                    <span class="skeleton-btn"></span>
-                </div>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
         </div>
 
-<<<<<<< HEAD
         <!-- Floating elements -->
         <div class="floating-icon" id="float1" style="top: 25%; left: 12%;">🎓</div>
         <div class="floating-icon" id="float2" style="bottom: 30%; right: 15%;">🛡️</div>
         <div class="floating-icon" id="float3" style="top: 55%; right: 18%;">📊</div>
     </section>
-=======
-        <section style="padding: 100px 5%; background: var(--secondary-dark);">
-            <div class="skeleton-section-header">
-                <div class="skeleton-section-title"></div>
-                <div class="skeleton-section-subtitle"></div>
-            </div>
-            <div class="skeleton-service-grid">
-                <div class="skeleton-service-card"><div class="skeleton-icon"></div><div class="skeleton-service-title"></div><div class="skeleton-service-desc"></div><div class="skeleton-service-btn"></div></div>
-                <div class="skeleton-service-card"><div class="skeleton-icon"></div><div class="skeleton-service-title"></div><div class="skeleton-service-desc"></div><div class="skeleton-service-btn"></div></div>
-                <div class="skeleton-service-card"><div class="skeleton-icon"></div><div class="skeleton-service-title"></div><div class="skeleton-service-desc"></div><div class="skeleton-service-btn"></div></div>
-                <div class="skeleton-service-card"><div class="skeleton-icon"></div><div class="skeleton-service-title"></div><div class="skeleton-service-desc"></div><div class="skeleton-service-btn"></div></div>
-            </div>
-        </section>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
-<<<<<<< HEAD
     <!-- Services -->
     <section id="services">
         <div class="section-header" data-aos="fade-up">
             <h2>Our Services</h2>
             <p>Comprehensive tech solutions tailored for you</p>
-=======
-        <section style="padding: 100px 5%; max-width: 1400px; margin: 0 auto;">
-            <div class="skeleton-about-wrapper">
-                <div class="skeleton-about-image"></div>
-                <div class="skeleton-about-text">
-                    <div class="skeleton-about-title"></div>
-                    <div class="skeleton-about-paragraph"></div>
-                    <div class="skeleton-quote"></div>
-                    <div><span class="skeleton-stat"></span><span class="skeleton-stat"></span><span class="skeleton-stat"></span></div>
-                </div>
-            </div>
-        </section>
-
-        <div class="skeleton-cta">
-            <div class="skeleton-cta-title"></div>
-            <div class="skeleton-cta-text"></div>
-            <div class="skeleton-cta-btn"></div>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         </div>
-<<<<<<< HEAD
         <div class="service-grid">
             <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fas fa-graduation-cap"></i>
@@ -374,88 +197,23 @@
                 <h3>Identity Services</h3>
                 <p>NIN, BVN, National ID services</p>
                 <button class="btn-inquire">Inquire Now</button>
-=======
-
-        <footer><div class="footer-logo">ICT Integrated Hub</div><div class="copyright">© 2026 ICT Integrated Hub</div></footer>
-    </div>
-
-    <!-- ACTUAL CONTENT -->
-    <div id="actualContent" class="content-wrapper">
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Your One-Stop Tech Hub in Nigeria</h1>
-                <p>Fast, reliable & affordable solutions for JAMB, NIN, BVN, Consultancy & Branding</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary" onclick="window.location.href='contact.html'">Get Started Today</button>
-                    <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })">Explore Services</button>
-                </div>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
-<<<<<<< HEAD
             <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                 <i class="fas fa-cogs"></i>
                 <h3>Tech Consultancy</h3>
                 <p>Systems, networks & career guidance</p>
                 <button class="btn-inquire">Inquire Now</button>
-=======
-        </section>
-
-        <section id="services">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Our Services</h2>
-                <p>Comprehensive tech solutions tailored to meet your needs</p>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
-<<<<<<< HEAD
             <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                 <i class="fas fa-palette"></i>
                 <h3>Branding & Design</h3>
                 <p>Logo, web development & digital branding</p>
                 <button class="btn-inquire">Inquire Now</button>
-=======
-            <div class="service-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Education Support</h3>
-                    <p>JAMB registration, Post-UTME, WAEC/NECO GCE, NOUN enrollment, and admission guidance.</p>
-                    <button class="btn-inquire" onclick="window.location.href='contact.html'">Inquire Now</button>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-id-card"></i>
-                    <h3>Identity Services</h3>
-                    <p>NIN slip printing, National ID cards, BVN printout, and identity validation services.</p>
-                    <button class="btn-inquire" onclick="window.location.href='contact.html'">Inquire Now</button>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-cogs"></i>
-                    <h3>Tech Consultancy</h3>
-                    <p>Systems setup, network topology, career guidance, and custom tech solutions.</p>
-                    <button class="btn-inquire" onclick="window.location.href='contact.html'">Inquire Now</button>
-                </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-palette"></i>
-                    <h3>Branding & Design</h3>
-                    <p>Logo design, e-flyers, company branding, web development, and data analysis.</p>
-                    <button class="btn-inquire" onclick="window.location.href='contact.html'">Inquire Now</button>
-                </div>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
             </div>
-<<<<<<< HEAD
         </div>
     </section>
-=======
-            <div class="view-all-services">
-                <a href="services.html" class="btn-view-all">
-                    View All Services <i class="fas fa-arrow-right"></i>
-                </a>
-            </div>
-        </section>
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
-<<<<<<< HEAD
      <!-- About Section -->
-=======
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
         <section id="about">
             <div class="about-wrapper">
                 <div class="about-image" data-aos="fade-right">
@@ -472,7 +230,6 @@
                         <span class="stat-badge">3+ Years of Excellence</span>
                         <span class="stat-badge">1,000+ Students Assisted</span>
                         <span class="stat-badge">100% Satisfaction Rate</span>
-                        <span class="stat-badge">24/7 Customer Support</span>
                     </div>
                 </div>
             </div>
@@ -500,20 +257,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-<<<<<<< HEAD
         AOS.init({ duration: 900, once: true, offset: 80 });
-=======
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('menuOverlay');
-            mobileMenu.classList.toggle('active');
-            overlay.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        }
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
 
-<<<<<<< HEAD
         // === OPTIMIZED FRAMER PARALLAX ===
         function initHeroParallax() {
             const hero = document.getElementById('hero');
@@ -582,42 +327,6 @@
         function toggleMobileMenu() {
             alert("Mobile menu functionality - implement as needed");
         }
-=======
-        // Skeleton screen - hides after 2 seconds
-        document.addEventListener('DOMContentLoaded', function() {
-            const skeletonScreen = document.getElementById('skeletonScreen');
-            const actualContent = document.getElementById('actualContent');
-            
-            setTimeout(function() {
-                skeletonScreen.classList.add('hidden');
-                actualContent.classList.add('visible');
-                AOS.init({ duration: 800, once: true, offset: 50 });
-                AOS.refresh();
-            }, 2000);
-        });
-
-        // MOUSE-TRACKING GRADIENT ANIMATION FOR LOGO
-        const logo = document.getElementById('logoLink');
-        
-        if (logo) {
-            logo.addEventListener('mousemove', function(e) {
-                // Get mouse position relative to the logo element
-                const rect = logo.getBoundingClientRect();
-                const x = ((e.clientX - rect.left) / rect.width) * 100;
-                const y = ((e.clientY - rect.top) / rect.height) * 100;
-                
-                // Set CSS custom properties for the gradient position
-                logo.style.setProperty('--mouse-x', `${x}%`);
-                logo.style.setProperty('--mouse-y', `${y}%`);
-            });
-            
-            // Optional: Reset gradient on mouse leave (smooth return to original)
-            logo.addEventListener('mouseleave', function() {
-                logo.style.setProperty('--mouse-x', '50%');
-                logo.style.setProperty('--mouse-y', '50%');
-            });
-        }
->>>>>>> 1e06063cbc68077d852527668d43f6089a9ac503
     </script>
 </body>
 </html>
