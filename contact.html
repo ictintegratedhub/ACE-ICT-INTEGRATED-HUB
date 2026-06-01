@@ -60,7 +60,7 @@
         "name": "ICT Integrated Hub",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ictintegratedhub.site/LOGOO.png"
+          "url": "https://ictintegratedhub.site/LOGO.png"
         },
         "contactPoint": [
           {
@@ -118,7 +118,7 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .logo {
+        h1, h2, h3, h4, .logo-text {
             font-family: 'Poppins', sans-serif;
         }
 
@@ -137,7 +137,7 @@
             background: var(--gold-light);
         }
 
-        /* Header */
+        /* Header with Logo */
         header {
             position: sticky;
             top: 0;
@@ -153,18 +153,46 @@
         }
 
         .logo {
-            font-size: 1.6rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gold-accent), var(--gold-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: var(--transition-default);
         }
 
-        .logo:hover {
-            opacity: 0.9;
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, var(--gold-accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .logo:hover .logo-icon {
+            transform: scale(1.05);
+        }
+
+        .logo:hover .logo-text {
+            background: radial-gradient(circle at 50% 50%, #ffffff 0%, var(--gold-accent) 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         nav ul {
@@ -318,10 +346,12 @@
         .breadcrumbs a {
             color: var(--gold-accent);
             text-decoration: none;
+            transition: var(--transition-default);
         }
 
         .breadcrumbs a:hover {
             text-decoration: underline;
+            color: var(--gold-light);
         }
 
         .breadcrumbs span {
@@ -340,6 +370,25 @@
             padding: 60px 5% 50px;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+            animation: rotateBg 20s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes rotateBg {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .contact-hero h1 {
@@ -349,6 +398,8 @@
             color: transparent;
             margin-bottom: 20px;
             font-size: clamp(2rem, 6vw, 3.5rem);
+            position: relative;
+            z-index: 2;
         }
 
         .contact-hero p {
@@ -356,6 +407,8 @@
             color: var(--text-muted);
             max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         @media (min-width: 992px) {
@@ -396,7 +449,7 @@
             background: var(--secondary-dark);
             border-radius: 20px;
             padding: 30px;
-            transition: var(--transition-default);
+            transition: var(--transition-slow);
             border: 1px solid rgba(212, 175, 55, 0.2);
             text-align: center;
         }
@@ -411,6 +464,11 @@
             font-size: 2.5rem;
             color: var(--gold-accent);
             margin-bottom: 15px;
+            transition: var(--transition-default);
+        }
+
+        .info-card:hover i {
+            transform: scale(1.1);
         }
 
         .info-card h3 {
@@ -439,6 +497,13 @@
             padding: 30px;
             text-align: center;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .social-links-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .social-links-card h3 {
@@ -470,6 +535,13 @@
             padding: 30px;
             text-align: center;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .hours-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .hours-card h3 {
@@ -477,9 +549,19 @@
             margin-bottom: 20px;
         }
 
+        .hours-card h3 i {
+            margin-right: 10px;
+            color: var(--gold-accent);
+        }
+
         .hours-card p {
             color: var(--text-muted);
             margin: 10px 0;
+            transition: var(--transition-default);
+        }
+
+        .hours-card:hover p {
+            color: var(--text-light);
         }
 
         .hours-card span {
@@ -493,6 +575,13 @@
             border-radius: 24px;
             padding: 40px 30px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: var(--transition-slow);
+        }
+
+        .form-section:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .section-title {
@@ -507,6 +596,11 @@
         .section-title i {
             font-size: 1.8rem;
             color: var(--gold-accent);
+            transition: var(--transition-default);
+        }
+
+        .form-section:hover .section-title i {
+            transform: scale(1.1);
         }
 
         .section-title h2 {
@@ -540,6 +634,12 @@
             transition: var(--transition-default);
         }
 
+        .form-group input:hover,
+        .form-group select:hover,
+        .form-group textarea:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
@@ -571,9 +671,10 @@
         }
 
         .btn-submit:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
             gap: 15px;
+            background: var(--gold-light);
         }
 
         .form-message {
@@ -613,6 +714,13 @@
             overflow: hidden;
             border: 1px solid rgba(212, 175, 55, 0.3);
             box-shadow: var(--shadow-md);
+            transition: var(--transition-slow);
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
         }
 
         .map-container iframe {
@@ -657,6 +765,7 @@
 
         .footer-links a:hover {
             color: var(--gold-accent);
+            transform: translateY(-2px);
         }
 
         .footer-social {
@@ -704,6 +813,16 @@
                 padding: 60px 8% 30px;
             }
         }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                font-size: 1rem;
+            }
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -713,12 +832,17 @@
 
     <!-- Header -->
     <header>
-        <a href="index.html" class="logo">ICT Integrated Hub</a>
+        <a href="index.html" class="logo">
+            <div class="logo-icon">
+                <img src="LOGO.png" alt="ICT Integrated Hub Logo">
+            </div>
+            <span class="logo-text">ICT Integrated Hub</span>
+        </a>
         
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="samples.html">Samples</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="about.html">About</a></li>
@@ -742,7 +866,7 @@
         <div class="close-menu" onclick="toggleMobileMenu()">&times;</div>
         <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#services">Services</a></li>
+            <li><a href="services.html">Services</a></li>
             <li><a href="samples.html">Samples</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="about.html">About</a></li>
@@ -786,7 +910,7 @@
                     <div class="info-card" data-aos="fade-right" data-aos-delay="200">
                         <i class="fas fa-envelope"></i>
                         <h3>Email Us</h3>
-                        <p><a href="mailto:contact@ictintegratedhub.site">ictintegratedhub@gmail.com</a></p>
+                        <p><a href="mailto:contact@ictintegratedhub.site">contact@ictintegratedhub.site</a></p>
                     </div>
 
                     <div class="social-links-card" data-aos="fade-right" data-aos-delay="300">
@@ -868,7 +992,15 @@
                 </div>
             </div>
 
-            
+            <!-- Map Section -->
+            <div class="map-section" data-aos="fade-up" data-aos-delay="200">
+                <h2>Find Us Here</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126732.52720447931!2d8.477424107483844!3d7.732845898693104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b6f7c5f8e6d%3A0x3f6b6c8e9e4d2a1f!2sMakurdi%2C%20Benue%20State%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1699999999999!5m2!1sen!2sng" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -887,7 +1019,8 @@
         </div>
 
         <div class="footer-links">
-            <a href="index.html#services">Services</a>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
             <a href="samples.html">Samples</a>
             <a href="blog.html">Blog</a>
             <a href="about.html">About Us</a>
@@ -895,7 +1028,7 @@
             <a href="contact.html">Contact</a>
         </div>
 
-        <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:ictintegratedhub@gmail.com" style="color: var(--gold-accent);">ictintegratedhub@gmail.com</a></p>
+        <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a></p>
         <p class="copyright">© 2026 ICT Integrated Hub. All Rights Reserved.</p>
         <div style="margin-top: 15px;">
             <a href="#" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
