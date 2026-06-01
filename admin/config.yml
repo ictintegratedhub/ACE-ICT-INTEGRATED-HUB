@@ -2,9 +2,7 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  base_url: https://sveltia-cms-auth.ictintegratedhub.workers.dev
-  auth:
-    client_id: Ov23liThFQAMDEEpIU82
+  # Remove base_url and auth section completely
 
 media_folder: static/images/uploads
 public_folder: /static/images/uploads
@@ -27,7 +25,6 @@ collections:
         label: Thumbnail Image
         widget: image
         required: false
-        hint: "Upload a thumbnail image for the blog card"
       - name: body
         label: Body
         widget: markdown
