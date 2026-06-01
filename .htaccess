@@ -1,19 +1,20 @@
+
 RewriteEngine On
 
-
+# Redirect /index.html to / (Homepage fix)
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
 RewriteRule ^index\.html$ / [R=301,L]
 
-
+# Redirect any URL ending with .html to clean URL
 RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
 RewriteRule ^ /%1 [R=301,L]
 
-
+# Internally serve .html files when clean URL is requested
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
-
+# Handle homepage specially
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^$ index.html [L]
