@@ -2,11 +2,12 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  # For PAT authentication, you need this:
+  # PAT authentication requires these exact lines:
   auth_type: implicit
-  # Don't remove these - they're required even for PAT:
-  app_id: missing  # This tells CMS to use PAT mode
-  
+  app_id: missing
+
+# Remove base_url and auth sections completely
+
 media_folder: static/images/uploads
 public_folder: /static/images/uploads
 
