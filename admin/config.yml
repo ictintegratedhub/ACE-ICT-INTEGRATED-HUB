@@ -2,8 +2,7 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  auth_type: implicit
-  app_id: missing
+  use_graphql: true
 
 media_folder: static/images/uploads
 public_folder: /static/images/uploads
