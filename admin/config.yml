@@ -2,11 +2,8 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  # PAT authentication requires these exact lines:
   auth_type: implicit
   app_id: missing
-
-# Remove base_url and auth sections completely
 
 media_folder: static/images/uploads
 public_folder: /static/images/uploads
