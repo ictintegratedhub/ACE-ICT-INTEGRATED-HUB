@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Content Manager - ICT Integrated Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - ICT Integrated Hub</title>
   
-  <!-- Prevent Cloudflare Rocket Loader interference -->
   <script data-cfasync="false" src="https://unpkg.com/@sveltia/cms@latest/dist/sveltia-cms.js"></script>
   
   <style>
-    body { margin: 0; padding: 0; }
+    html, body { height: 100%; margin: 0; background: #f8f9fa; }
   </style>
 </head>
 <body>
-  <!-- Sveltia CMS will mount here automatically -->
+  <script>
+    // Force CMS to load after page is ready
+    window.addEventListener('load', () => {
+      console.log('Sveltia CMS loading...');
+    });
+  </script>
 </body>
 </html>
