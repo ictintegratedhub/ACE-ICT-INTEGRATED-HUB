@@ -1,0 +1,13 @@
+{% assign all_categories = site.posts | map: "categories" | flatten | uniq | sort %}
+{% if all_categories.size > 0 %}
+<div class="category-nav">
+  <h3>Browse by Category</h3>
+  <div class="category-links">
+    {% for category in all_categories %}
+      <a href="/categories/{{ category | slugify }}/" class="category-link">
+        {{ category }}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
