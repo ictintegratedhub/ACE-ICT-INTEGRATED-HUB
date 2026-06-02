@@ -2,7 +2,8 @@ backend:
   name: github
   repo: ictintegratedhub/ACE-ICT-INTEGRATED-HUB
   branch: main
-  use_graphql: true
+  auth_type: implicit
+  app_id: missing
 
 media_folder: static/images/uploads
 public_folder: /static/images/uploads
@@ -21,6 +22,15 @@ collections:
       - name: date
         label: Date
         widget: datetime
+      - name: categories
+        label: Categories
+        widget: list
+        allow_add: true
+        default: ["Tech"]
+        field:
+          label: Category
+          name: category
+          widget: string
       - name: thumbnail
         label: Thumbnail Image
         widget: image
