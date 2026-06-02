@@ -3,7 +3,7 @@ title: How to Check and Upload Your O’Level Results on JAMB CAPS (2026 Guide)
 date: 2026-06-02T19:31:00
 categories:
   - E
-thumbnail: ''
+thumbnail: /static/images/uploads/Gemini_Generated_Image_lh734wlh734wlh73.png
 ---
 
 Did you know that scoring over 250 in your UTME does not guarantee university admission if your O’Level results are missing from the JAMB portal?
