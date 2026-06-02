@@ -2,7 +2,7 @@
 title: How to Check and Upload Your O’Level Results on JAMB CAPS (2026 Guide)
 date: 2026-06-02T19:31:00
 categories:
-  - E
+  - Education
 thumbnail: /static/images/uploads/Gemini_Generated_Image_lh734wlh734wlh73.png
 ---
 
@@ -105,3 +105,4 @@ Do not let a minor technical oversight derail your academic goals. If you checke
 3. Our team will verify your data, clear any profile discrepancies, and safely upload your credentials to the portal database in minutes.
 
 **Have questions about combining sittings or fixing an error on your profile? Let us handle it safely. Contact ICT Integrated Hub today.**
+**Contact: +234 (0) 8156144699**
