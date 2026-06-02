@@ -52,8 +52,6 @@ If your grades are visible and match your certificates perfectly, your profile i
 
 Here is the exact procedure to get your results uploaded safely and securely:
 
-1
-
 Gather Your Official Credentials
 
 ```plain
@@ -61,8 +59,6 @@ Prerequisite
 ```
 
 Locate your original printed WAEC, NECO, or NABTEB statement of results or your online scratch card details. Double-check that your exam year, center number, and candidate number are completely legible.
-
-2
 
 Locate a Fully Verified Center
 
@@ -72,8 +68,6 @@ Security Measure
 
 Do not give your private login details to unverified third-party cafes or random individuals online. Walk directly into an approved, professional digital services center equipped with direct backend access to the portal system.
 
-3
-
 Biometric and Data Cross-Matching
 
 ```plain
@@ -81,8 +75,6 @@ System Update
 ```
 
 The desk officer will log into the backend infrastructure using secure credentials. They will upload your subject grades item-by-item and match them against your unique 10-character profile code.
-
-4
 
 Confirm Re-Verification
 
