@@ -27,4 +27,100 @@ layout: default
   <div class="post-content">
     {{ content }}
   </div>
+  ---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1>{{ page.title }}</h1>
+    <div class="post-meta">
+      <span class="post-date">{{ page.date | date: "%B %d, %Y" }}</span>
+      {% if page.categories %}
+        <span class="post-categories">
+          in 
+          {% for category in page.categories %}
+            <a href="/categories/{{ category | slugify }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.thumbnail %}
+  <div class="post-thumbnail">
+    <img src="{{ page.thumbnail }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- ===== ADD SHARE BUTTONS HERE ===== -->
+  <div class="share-buttons">
+    <h3>Share this post:</h3>
+    
+    <!-- Twitter -->
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" 
+       target="_blank" class="share-btn twitter">Twitter</a>
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" 
+       target="_blank" class="share-btn facebook">Facebook</a>
+    
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" 
+       target="_blank" class="share-btn linkedin">LinkedIn</a>
+    
+    <!-- WhatsApp -->
+    <a href="https://wa.me/?text={{ page.title | url_encode }} - {{ page.url | absolute_url }}" 
+       target="_blank" class="share-btn whatsapp">WhatsApp</a>
+    
+    <!-- Email -->
+    <a href="mailto:?subject={{ page.title | url_encode }}&body=Check out this post: {{ page.url | absolute_url }}" 
+       class="share-btn email">Email</a>
+    
+    <!-- Copy Link Button -->
+    <button onclick="copyToClipboard('{{ page.url | absolute_url }}')" class="share-btn copy">Copy Link</button>
+  </div>
+  <!-- ===== END SHARE BUTTONS ===== -->
+
+</article>
+
+<script>
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text);
+  alert('Link copied to clipboard!');
+}
+</script>
+
+<!-- Simple Newsletter Form (Manual Collection) -->
+<div class="newsletter-section">
+  <div class="newsletter-inner">
+    <h3>📧 Subscribe for Updates</h3>
+    <p>Get notified when I publish new blog posts.</p>
+    
+    <form class="newsletter-form" onsubmit="subscribeUser(event)">
+      <input type="email" id="subscriber-email" placeholder="Your email address" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-note">I'll never share your email. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<script>
+function subscribeUser(event) {
+  event.preventDefault();
+  const email = document.getElementById('subscriber-email').value;
+  
+  // This sends an email to you (you'll need to set up your email backend)
+  // For now, just show a message
+  alert(`Thanks for subscribing! (Demo: ${email})\n\nTo make this actually work, you need to set up a backend or use Mailchimp's proper form.`);
+  
+  // Clear the form
+  document.getElementById('subscriber-email').value = '';
+}
+</script>
+
 </article>
