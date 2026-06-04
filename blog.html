@@ -614,6 +614,27 @@
             margin-bottom: 20px;
         }
 
+                    <!-- Newsletter Signup Form -->
+            <div class="newsletter-section" id="newsletter-section" data-aos="fade-up">
+                <div class="newsletter-inner">
+                    <h3>📧 Never Miss a Post</h3>
+                    <p>Get the latest tech insights, JAMB tips, and industry news delivered straight to your inbox.</p>
+                    <form class="newsletter-form" action="YOUR_APPS_SCRIPT_URL_HERE" method="POST">
+                        <input type="email" name="email" placeholder="Your email address" required aria-label="Your email address">
+                        <input type="text" name="name" placeholder="Your name (optional)" aria-label="Your name">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    <p class="newsletter-note">No spam, unsubscribe anytime.</p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination" id="pagination" style="display: none;">
+                <button id="prev-btn" onclick="changePage(-1)"><i class="fas fa-chevron-left"></i> Previous</button>
+                <span id="page-info">Page 1 of 1</span>
+                <button id="next-btn" onclick="changePage(1)">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+
         /* Pagination */
         .pagination {
             display: flex;
