@@ -95,32 +95,30 @@ function copyToClipboard(text) {
 }
 </script>
 
-<!-- Simple Newsletter Form (Manual Collection) -->
+<!-- Gmail Newsletter Signup Form -->
 <div class="newsletter-section">
   <div class="newsletter-inner">
     <h3>📧 Subscribe for Updates</h3>
     <p>Get notified when I publish new blog posts.</p>
     
-    <form class="newsletter-form" onsubmit="subscribeUser(event)">
-      <input type="email" id="subscriber-email" placeholder="Your email address" required>
+    <!-- This form will email you directly -->
+    <form class="newsletter-form" action="https://formsubmit.co/YOUR_GMAIL_HERE" method="POST">
+      <!-- Important: Add these hidden fields -->
+      <input type="hidden" name="_subject" value="New Blog Subscriber!">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" value="https://ictintegratedhub.site/thanks.html">
+      
+      <!-- The visible email input -->
+      <input type="email" name="email" placeholder="Your email address" required>
+      
+      <!-- Optional: Add name field -->
+      <input type="text" name="name" placeholder="Your name (optional)">
+      
       <button type="submit">Subscribe</button>
     </form>
-    <p class="newsletter-note">I'll never share your email. Unsubscribe anytime.</p>
+    <p class="newsletter-note">No spam. Unsubscribe anytime.</p>
   </div>
 </div>
-
-<script>
-function subscribeUser(event) {
-  event.preventDefault();
-  const email = document.getElementById('subscriber-email').value;
-  
-  // This sends an email to you (you'll need to set up your email backend)
-  // For now, just show a message
-  alert(`Thanks for subscribing! (Demo: ${email})\n\nTo make this actually work, you need to set up a backend or use Mailchimp's proper form.`);
-  
-  // Clear the form
-  document.getElementById('subscriber-email').value = '';
-}
-</script>
 
 </article>
