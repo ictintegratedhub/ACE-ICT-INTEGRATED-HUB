@@ -165,7 +165,35 @@
                     <div class="post-date"><i class="fas fa-calendar-alt"></i> ${date || 'Recent'}</div>
                 </div>
                 <div class="post-content">${html}</div>
+
+                
             `;
+
+            // Inside loadPost(), after the post content HTML
+document.getElementById('post-container').innerHTML = `
+  <div class="post-header">
+    ... existing post header code ...
+  </div>
+  <div class="post-content">${html}</div>
+  
+  <!-- Share Buttons -->
+  <div class="share-buttons">
+    <h3>Share this post:</h3>
+    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(window.location.href)}" 
+       target="_blank" class="share-btn twitter">Twitter</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" 
+       target="_blank" class="share-btn facebook">Facebook</a>
+    <a href="https://wa.me/?text=${encodeURIComponent(title)} - ${encodeURIComponent(window.location.href)}" 
+       target="_blank" class="share-btn whatsapp">WhatsApp</a>
+    <button onclick="copyToClipboard('${window.location.href}')" class="share-btn copy">Copy Link</button>
+  </div>
+`;
+
+// Add this function somewhere in your script
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text);
+  alert('Link copied to clipboard!');
+}
             
         } catch (error) {
             document.getElementById('post-container').innerHTML = `<div class="loading"><p>Post not found.</p><a href="/#blog" class="btn-back">Back to Blog</a></div>`;

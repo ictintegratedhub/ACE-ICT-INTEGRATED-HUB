@@ -243,3 +243,63 @@
     padding: 20px;
   }
 }
+
+/* Newsletter Section */
+.newsletter-section {
+  background: linear-gradient(135deg, #2c1e0f 0%, #1a1a1a 100%);
+  border-radius: 20px;
+  padding: 40px 30px;
+  margin: 40px 0;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 450px;
+  margin: 25px auto 0;
+}
+
+.newsletter-form input {
+  padding: 14px 18px;
+  border-radius: 50px;
+  border: 1px solid #d4af37;
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5f5f5;
+}
+
+.newsletter-form button {
+  background: #d4af37;
+  color: #1a1a1a;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Share Buttons */
+.share-buttons {
+  margin: 40px 0 20px;
+  padding: 20px;
+  background: #2c1e0f;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.share-btn {
+  display: inline-block;
+  margin: 5px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+}
+
+.twitter { background: #1DA1F2; }
+.facebook { background: #4267B2; }
+.whatsapp { background: #25D366; }
+.copy { background: #6c757d; }
