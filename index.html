@@ -12,7 +12,7 @@
     <meta name="author" content="ICT Integrated Hub">
     <meta name="robots" content="index, follow, max-image-preview:large">
     
-    <!-- Canonical URL - Fixed to remove index.html -->
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://ictintegratedhub.site/">
     
     <!-- Open Graph / Social Media -->
@@ -113,6 +113,11 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Hide body content until consent is given */
+        body.consent-pending {
+            overflow: hidden;
         }
 
         h1, h2, h3, h4, .logo-text {
@@ -275,7 +280,7 @@
             max-width: 350px;
             height: 100vh;
             background: var(--primary-dark);
-            z-index: 2000;
+            z-index: 1001;
             padding: 80px 30px;
             transition: 0.3s ease;
             box-shadow: -5px 0 30px rgba(0, 0, 0, 0.8);
@@ -324,7 +329,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 1999;
+            z-index: 999;
             display: none;
         }
 
@@ -768,12 +773,317 @@
                 height: 35px;
             }
         }
+
+        /* ========== CONSENT POPUP STYLES ========== */
+        .consent-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .consent-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .consent-popup {
+            background: var(--secondary-dark);
+            border-radius: 24px;
+            max-width: 550px;
+            width: 90%;
+            padding: 40px 35px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: popupSlideIn 0.4s ease-out;
+        }
+
+        @keyframes popupSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .consent-icon {
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+        }
+
+        .consent-popup h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .consent-popup p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .consent-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .consent-links a {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-default);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .consent-links a:hover {
+            text-decoration: underline;
+            gap: 10px;
+        }
+
+        .consent-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-accept {
+            background: var(--gold-accent);
+            color: var(--primary-dark);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-default);
+            width: 100%;
+        }
+
+        .btn-accept:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-decline {
+            background: transparent;
+            color: var(--text-muted);
+            padding: 12px 28px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition-default);
+            width: 100%;
+        }
+
+        .btn-decline:hover {
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+            transform: translateY(-2px);
+        }
+
+        /* Privacy Policy & Terms Modal */
+        .legal-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .legal-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .legal-modal-content {
+            background: var(--secondary-dark);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .legal-modal-content h3 {
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .legal-modal-content h4 {
+            color: var(--gold-accent);
+            margin: 20px 0 10px;
+        }
+
+        .legal-modal-content p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .legal-modal-content ul {
+            color: var(--text-muted);
+            margin: 10px 0 15px 25px;
+        }
+
+        .legal-modal-content li {
+            margin: 8px 0;
+        }
+
+        .close-legal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            color: var(--gold-accent);
+            cursor: pointer;
+            transition: var(--transition-default);
+        }
+
+        .close-legal:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
-<body>
+<body class="consent-pending">
 
-    <!-- Skip to Content Link -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- CONSENT POPUP -->
+    <div id="consentOverlay" class="consent-overlay">
+        <div class="consent-popup">
+            <div class="consent-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Welcome to ICT Integrated Hub</h2>
+            <p>Before you continue, please take a moment to read and accept our Privacy Policy and Terms & Conditions. We are committed to protecting your data and providing transparent services.</p>
+            
+            <div class="consent-links">
+                <a href="#" id="viewPrivacyBtn"><i class="fas fa-lock"></i> Privacy Policy</a>
+                <a href="#" id="viewTermsBtn"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+            </div>
+            
+            <div class="consent-buttons">
+                <button class="btn-accept" id="acceptBtn">I Accept</button>
+                <button class="btn-decline" id="declineBtn">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIVACY POLICY MODAL -->
+    <div id="privacyModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="close-legal" onclick="closePrivacyModal()">&times;</span>
+            <h3>Privacy Policy</h3>
+            <p><strong>Last Updated:</strong> June 2024</p>
+            
+            <p>At ICT Integrated Hub ("we," "us," or "our"), we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services.</p>
+            
+            <h4>1. Information We Collect</h4>
+            <p>We may collect personal information that you voluntarily provide to us when you:</p>
+            <ul>
+                <li>Fill out contact or application forms</li>
+                <li>Register for our services (JAMB, NIN, BVN, etc.)</li>
+                <li>Subscribe to our newsletter</li>
+                <li>Contact us via phone, email, or WhatsApp</li>
+            </ul>
+            <p>This information may include your name, email address, phone number, and any other details you choose to provide.</p>
+            
+            <h4>2. How We Use Your Information</h4>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Provide and manage our services (JAMB registration, NIN/BVN processing, etc.)</li>
+                <li>Communicate with you about your requests or inquiries</li>
+                <li>Improve our website and service offerings</li>
+                <li>Comply with legal obligations</li>
+            </ul>
+            
+            <h4>3. Data Security</h4>
+            <p>We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+            
+            <h4>4. Third-Party Disclosure</h4>
+            <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties without your consent, except as required by law or to provide our services (e.g., JAMB, NIMC, BVN portals).</p>
+            
+            <h4>5. Your Rights</h4>
+            <p>You have the right to access, correct, or delete your personal information. To exercise these rights, please contact us at <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a>.</p>
+            
+            <h4>6. Contact Us</h4>
+            <p>If you have questions about this Privacy Policy, please contact us at:</p>
+            <p>Email: <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a><br>
+            Phone: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a></p>
+        </div>
+    </div>
+
+    <!-- TERMS & CONDITIONS MODAL -->
+    <div id="termsModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="close-legal" onclick="closeTermsModal()">&times;</span>
+            <h3>Terms & Conditions</h3>
+            <p><strong>Last Updated:</strong> June 2024</p>
+            
+            <h4>1. Acceptance of Terms</h4>
+            <p>By accessing and using the ICT Integrated Hub website and services, you agree to be bound by these Terms & Conditions. If you do not agree, please do not use our services.</p>
+            
+            <h4>2. Services Description</h4>
+            <p>ICT Integrated Hub provides various ICT services including but not limited to:</p>
+            <ul>
+                <li>Educational support (JAMB, WAEC, NECO, Post-UTME registrations)</li>
+                <li>Identity services (NIN slip printing, BVN printout, National ID)</li>
+                <li>Tech consultancy (systems setup, network topology)</li>
+                <li>Branding & design (logo design, e-flyers, web development)</li>
+            </ul>
+            
+            <h4>3. User Responsibilities</h4>
+            <p>You agree to provide accurate and complete information when using our services. You are responsible for maintaining the confidentiality of any account information.</p>
+            
+            <h4>4. Payment and Fees</h4>
+            <p>Fees for our services are clearly communicated before processing. Payments are non-refundable once services have been initiated, except as required by applicable law.</p>
+            
+            <h4>5. Limitation of Liability</h4>
+            <p>ICT Integrated Hub shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our services, including delays caused by third-party platforms (JAMB, NIMC, etc.).</p>
+            
+            <h4>6. Governing Law</h4>
+            <p>These Terms shall be governed by and construed in accordance with the laws of the Federal Republic of Nigeria.</p>
+            
+            <h4>7. Modifications</h4>
+            <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting on this page.</p>
+            
+            <h4>8. Contact Us</h4>
+            <p>For questions about these Terms, contact us at <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a> or call <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a>.</p>
+        </div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -939,15 +1249,15 @@
         <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a></p>
         <p class="copyright">© 2026 ICT Integrated Hub. All Rights Reserved.</p>
         <div style="margin-top: 15px;">
-            <a href="#" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
-            <a href="#" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
+            <a href="#" id="footerPrivacyLink" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
+            <a href="#" id="footerTermsLink" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 800, once: true, offset: 50 });
+        // Initialize AOS (will be reinitialized after consent)
+        AOS.init({ duration: 800, once: true, offset: 50, disable: true });
 
         // Mobile menu functions
         function toggleMobileMenu() {
@@ -957,6 +1267,123 @@
             overlay.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
         }
+
+        // ========== CONSENT POPUP FUNCTIONS ==========
+        
+        // Check if user has already given consent
+        function hasUserConsented() {
+            return localStorage.getItem('consentGiven') === 'true';
+        }
+
+        // Save consent to localStorage
+        function saveConsent(consented) {
+            localStorage.setItem('consentGiven', consented);
+        }
+
+        // Show content after consent
+        function showContent() {
+            const consentOverlay = document.getElementById('consentOverlay');
+            consentOverlay.classList.add('hidden');
+            document.body.classList.remove('consent-pending');
+            
+            // Re-enable AOS animations
+            AOS.init({ duration: 800, once: true, offset: 50, disable: false });
+            AOS.refresh();
+            
+            // Save consent
+            saveConsent(true);
+        }
+
+        // Handle decline
+        function declineConsent() {
+            // Show a message and optionally redirect or block access
+            const consentOverlay = document.getElementById('consentOverlay');
+            consentOverlay.innerHTML = `
+                <div class="consent-popup">
+                    <div class="consent-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h2>Consent Required</h2>
+                    <p>You must accept our Privacy Policy and Terms & Conditions to continue using our website.</p>
+                    <div class="consent-buttons">
+                        <button class="btn-accept" id="retryAcceptBtn">Accept Terms</button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('retryAcceptBtn').addEventListener('click', () => {
+                showContent();
+            });
+        }
+
+        // Show Privacy Policy Modal
+        function showPrivacyModal() {
+            document.getElementById('privacyModal').classList.add('active');
+        }
+
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').classList.remove('active');
+        }
+
+        // Show Terms Modal
+        function showTermsModal() {
+            document.getElementById('termsModal').classList.add('active');
+        }
+
+        function closeTermsModal() {
+            document.getElementById('termsModal').classList.remove('active');
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            document.getElementById('acceptBtn').addEventListener('click', showContent);
+            document.getElementById('declineBtn').addEventListener('click', declineConsent);
+            document.getElementById('viewPrivacyBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                showPrivacyModal();
+            });
+            document.getElementById('viewTermsBtn').addEventListener('click', (e) => {
+                e.preventDefault();
+                showTermsModal();
+            });
+            
+            // Footer links
+            const footerPrivacy = document.getElementById('footerPrivacyLink');
+            const footerTerms = document.getElementById('footerTermsLink');
+            if (footerPrivacy) {
+                footerPrivacy.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPrivacyModal();
+                });
+            }
+            if (footerTerms) {
+                footerTerms.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showTermsModal();
+                });
+            }
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                const privacyModal = document.getElementById('privacyModal');
+                const termsModal = document.getElementById('termsModal');
+                if (e.target === privacyModal) closePrivacyModal();
+                if (e.target === termsModal) closeTermsModal();
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setupEventListeners();
+            
+            // If user has already consented, show content immediately
+            if (hasUserConsented()) {
+                showContent();
+            } else {
+                // Keep popup visible, body content is blocked
+                document.body.style.overflow = 'hidden';
+            }
+        });
     </script>
 </body>
 </html>
