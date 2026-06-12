@@ -41,7 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-
+    
     <style>
         * {
             margin: 0;
@@ -294,6 +294,93 @@
         @keyframes rotateBg {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+
+        /* Virtual Services Banner */
+        .virtual-banner {
+            max-width: 1400px;
+            margin: 40px auto 0;
+            padding: 0 5%;
+        }
+
+        .virtual-banner-content {
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: var(--transition-slow);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .virtual-banner-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .virtual-banner-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .virtual-banner-icon i {
+            font-size: 2.5rem;
+            color: var(--gold-accent);
+        }
+
+        .virtual-banner-text {
+            flex: 1;
+        }
+
+        .virtual-banner-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--gold-accent);
+        }
+
+        .virtual-banner-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .btn-virtual {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--btn-color);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-default);
+        }
+
+        .btn-virtual:hover {
+            background: var(--btn-hover);
+            transform: translateY(-2px);
+            gap: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .virtual-banner-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            .virtual-banner-text h3 {
+                font-size: 1.3rem;
+            }
         }
 
         /* Services Container */
@@ -641,9 +728,22 @@
         <p>Your one-stop solution for all document, registration, and tech needs in Nigeria</p>
     </section>
 
+    <!-- Virtual Services Banner -->
+    <div class="virtual-banner" data-aos="fade-up" data-aos-delay="50">
+        <div class="virtual-banner-content">
+            <div class="virtual-banner-icon">
+                <i class="fas fa-laptop-house"></i>
+            </div>
+            <div class="virtual-banner-text">
+                <h3>🌐 Not in Our Area? Get Expert Help From Anywhere!</h3>
+                <p>Distance shouldn't stop your tech growth. You can now access our premium digital skills training, IT support, and business consulting 100% online. Get real-time solutions right from your laptop or phone—no travel required.</p>
+                <a href="/services/virtual" class="btn-virtual">Explore Virtual Services <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- Services Container -->
     <div class="services-container">
-        
         <!-- Category 1: CORE DOCUMENT SERVICES -->
         <div class="service-category" data-aos="fade-up" data-aos-delay="100">
             <div class="category-header">
@@ -780,8 +880,8 @@
         <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a></p>
         <p class="copyright">© 2026 ICT Integrated Hub. All Rights Reserved.</p>
         <div style="margin-top: 15px;">
-            <a href="#" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
-            <a href="#" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
+            <a href="/privacy" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
+            <a href="/terms" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
         </div>
     </footer>
 
