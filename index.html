@@ -126,7 +126,8 @@
             transition: opacity 0.5s ease;
         }
 
-        body.consent-given #main-content-wrapper {
+        /* Show content when consent is given (using inline style approach) */
+        #main-content-wrapper.visible {
             opacity: 1;
         }
 
@@ -1193,33 +1194,33 @@
         </section>
 
         <!-- Footer -->
-<footer>
-    <div class="footer-logo">ICT Integrated Hub</div>
-    <p>Your One-Stop Tech Hub in Nigeria</p>
+        <footer>
+            <div class="footer-logo">ICT Integrated Hub</div>
+            <p>Your One-Stop Tech Hub in Nigeria</p>
 
-    <div class="footer-social">
-        <a href="https://wa.me/2348156144699" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://www.instagram.com/ict_integrated_hub?igsh=MWFvNGV6NWkycDJy" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:contact@ictintegratedhub.site" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </div>
+            <div class="footer-social">
+                <a href="https://wa.me/2348156144699" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/ict_integrated_hub?igsh=MWFvNGV6NWkycDJy" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:contact@ictintegratedhub.site" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
 
-    <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/services">Services</a>
-        <a href="/samples">Samples</a>
-        <a href="/blog">Blog</a>
-        <a href="/about">About Us</a>
-        <a href="/careers">Careers</a>
-        <a href="/contact">Contact</a>
-    </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="/services">Services</a>
+                <a href="/samples">Samples</a>
+                <a href="/blog">Blog</a>
+                <a href="/about">About Us</a>
+                <a href="/careers">Careers</a>
+                <a href="/contact">Contact</a>
+            </div>
 
-    <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a></p>
-    <p class="copyright">© 2026 ICT Integrated Hub. All Rights Reserved.</p>
-    <div style="margin-top: 15px;">
-        <a href="/privacy" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
-        <a href="/terms" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
-    </div>
-</footer>
+            <p>Contact: <a href="tel:+2348156144699" style="color: var(--gold-accent);">+234 815 614 4699</a> | <a href="mailto:contact@ictintegratedhub.site" style="color: var(--gold-accent);">contact@ictintegratedhub.site</a></p>
+            <p class="copyright">© 2026 ICT Integrated Hub. All Rights Reserved.</p>
+            <div style="margin-top: 15px;">
+                <a href="/privacy" style="color: #666; font-size: 0.8rem;">Privacy Policy</a> | 
+                <a href="/terms" style="color: #666; font-size: 0.8rem;">Terms of Service</a>
+            </div>
+        </footer>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -1251,9 +1252,14 @@
         // Show content after consent
         function showContent() {
             const consentOverlay = document.getElementById('consentOverlay');
+            const mainContent = document.getElementById('main-content-wrapper');
+            
             consentOverlay.classList.add('hidden');
             document.body.classList.remove('consent-pending');
             document.body.style.overflow = '';
+            
+            // Show main content by adding visible class
+            mainContent.classList.add('visible');
             
             // Re-enable AOS animations
             AOS.init({ duration: 800, once: true, offset: 50, disable: false });
@@ -1277,7 +1283,6 @@
                     <button class="btn-accept" id="retryAcceptBtn">Accept Terms</button>
                 </div>
             `;
-            
             document.getElementById('retryAcceptBtn').addEventListener('click', () => {
                 showContent();
             });
@@ -1326,22 +1331,6 @@
             const closeTerms = document.getElementById('closeTermsBtn');
             if (closePrivacy) closePrivacy.addEventListener('click', closePrivacyModal);
             if (closeTerms) closeTerms.addEventListener('click', closeTermsModal);
-            
-            // Footer links
-            const footerPrivacy = document.getElementById('footerPrivacyLink');
-            const footerTerms = document.getElementById('footerTermsLink');
-            if (footerPrivacy) {
-                footerPrivacy.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showPrivacyModal();
-                });
-            }
-            if (footerTerms) {
-                footerTerms.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showTermsModal();
-                });
-            }
             
             // Close modals when clicking outside
             window.addEventListener('click', (e) => {
