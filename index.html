@@ -115,22 +115,6 @@
             overflow-x: hidden;
         }
 
-        /* Hide body content until consent is given */
-        body.consent-pending {
-            overflow: hidden;
-        }
-
-        /* Hide main content initially */
-        #main-content-wrapper {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        /* Show content when consent is given (using inline style approach) */
-        #main-content-wrapper.visible {
-            opacity: 1;
-        }
-
         h1, h2, h3, h4, .logo-text {
             font-family: 'Poppins', sans-serif;
         }
@@ -798,7 +782,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.5s ease;
         }
 
         .consent-overlay.hidden {
@@ -1004,7 +987,7 @@
         }
     </style>
 </head>
-<body class="consent-pending">
+<body>
 
     <!-- CONSENT POPUP -->
     <div id="consentOverlay" class="consent-overlay">
@@ -1050,8 +1033,8 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT WRAPPER -->
-    <div id="main-content-wrapper">
+    <!-- MAIN CONTENT -->
+    <div id="main-content">
         <!-- Header -->
         <header>
             <a href="/" class="logo">
@@ -1225,8 +1208,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS (will be reinitialized after consent)
-        AOS.init({ duration: 800, once: true, offset: 50, disable: true });
+        // Initialize AOS
+        AOS.init({ duration: 800, once: true, offset: 50 });
 
         // Mobile menu functions
         function toggleMobileMenu() {
@@ -1244,29 +1227,17 @@
             return localStorage.getItem('consentGiven') === 'true';
         }
 
-        // Save consent to localStorage
-        function saveConsent(consented) {
-            localStorage.setItem('consentGiven', consented);
-        }
-
         // Show content after consent
         function showContent() {
             const consentOverlay = document.getElementById('consentOverlay');
-            const mainContent = document.getElementById('main-content-wrapper');
-            
             consentOverlay.classList.add('hidden');
-            document.body.classList.remove('consent-pending');
             document.body.style.overflow = '';
             
-            // Show main content by adding visible class
-            mainContent.classList.add('visible');
-            
-            // Re-enable AOS animations
-            AOS.init({ duration: 800, once: true, offset: 50, disable: false });
+            // Refresh AOS animations
             AOS.refresh();
             
             // Save consent
-            saveConsent(true);
+            localStorage.setItem('consentGiven', 'true');
         }
 
         // Handle decline
@@ -1345,11 +1316,13 @@
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             
-            // If user has already consented, show content immediately
+            // If user has already consented, hide popup immediately
             if (hasUserConsented()) {
-                showContent();
+                const consentOverlay = document.getElementById('consentOverlay');
+                consentOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
             }
-            // Otherwise, popup is already visible (no extra action needed)
+            // Otherwise, popup is visible - no extra action needed
         });
     </script>
 </body>
