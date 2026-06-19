@@ -1233,17 +1233,21 @@
             consentOverlay.classList.add('hidden');
             document.body.style.overflow = '';
             
-            // Refresh AOS animations
-            AOS.refresh();
+            // CRITICAL FIX: Force AOS to recalculate viewport element positions 
+            // now that the black overlay curtain has been pulled back.
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
             
             // Save consent
             localStorage.setItem('consentGiven', 'true');
         }
 
-        // Handle decline
+        // Handle decline safely without stripping listeners
         function declineConsent() {
-            // Show a message requiring acceptance
             const consentPopup = document.querySelector('#consentOverlay .consent-popup');
+            
+            // Use standard HTML assignment, but safely attach a fresh event handler right after
             consentPopup.innerHTML = `
                 <div class="consent-icon">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -1254,9 +1258,9 @@
                     <button class="btn-accept" id="retryAcceptBtn">Accept Terms</button>
                 </div>
             `;
-            document.getElementById('retryAcceptBtn').addEventListener('click', () => {
-                showContent();
-            });
+            
+            // Bind the newly created button to the showContent driver
+            document.getElementById('retryAcceptBtn').addEventListener('click', showContent);
         }
 
         // Show Privacy Policy Modal
@@ -1277,7 +1281,7 @@
             document.getElementById('termsModal').classList.remove('active');
         }
 
-        // Set up event listeners
+        // Set up event listeners systematically
         function setupEventListeners() {
             // Accept and Decline buttons
             const acceptBtn = document.getElementById('acceptBtn');
@@ -1312,17 +1316,20 @@
             });
         }
 
-        // Initialize on page load
+        // Initialize safely on page load
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             
-            // If user has already consented, hide popup immediately
+            // If user has already consented, hide popup instantly
             if (hasUserConsented()) {
                 const consentOverlay = document.getElementById('consentOverlay');
                 consentOverlay.classList.add('hidden');
                 document.body.style.overflow = '';
+                AOS.refresh();
+            } else {
+                // Ensure page doesn't scroll behind the active popup layout
+                document.body.style.overflow = 'hidden';
             }
-            // Otherwise, popup is visible - no extra action needed
         });
     </script>
 </body>
