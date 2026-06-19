@@ -115,6 +115,22 @@
             overflow-x: hidden;
         }
 
+        /* Hide body content until consent is given */
+        body.consent-pending {
+            overflow: hidden;
+        }
+
+        /* Hide main content initially */
+        #main-content-wrapper {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Show content when consent is given (using inline style approach) */
+        #main-content-wrapper.visible {
+            opacity: 1;
+        }
+
         h1, h2, h3, h4, .logo-text {
             font-family: 'Poppins', sans-serif;
         }
@@ -782,6 +798,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: opacity 0.5s ease;
         }
 
         .consent-overlay.hidden {
@@ -987,7 +1004,7 @@
         }
     </style>
 </head>
-<body>
+<body class="consent-pending">
 
     <!-- CONSENT POPUP -->
     <div id="consentOverlay" class="consent-overlay">
@@ -1033,8 +1050,8 @@
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main-content">
+    <!-- MAIN CONTENT WRAPPER -->
+    <div id="main-content-wrapper">
         <!-- Header -->
         <header>
             <a href="/" class="logo">
@@ -1208,8 +1225,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({ duration: 800, once: true, offset: 50 });
+        // Initialize AOS (will be reinitialized after consent)
+        AOS.init({ duration: 800, once: true, offset: 50, disable: true });
 
         // Mobile menu functions
         function toggleMobileMenu() {
@@ -1227,27 +1244,35 @@
             return localStorage.getItem('consentGiven') === 'true';
         }
 
+        // Save consent to localStorage
+        function saveConsent(consented) {
+            localStorage.setItem('consentGiven', consented);
+        }
+
         // Show content after consent
         function showContent() {
             const consentOverlay = document.getElementById('consentOverlay');
+            const mainContent = document.getElementById('main-content-wrapper');
+            
             consentOverlay.classList.add('hidden');
+            document.body.classList.remove('consent-pending');
             document.body.style.overflow = '';
             
-            // CRITICAL FIX: Force AOS to recalculate viewport element positions 
-            // now that the black overlay curtain has been pulled back.
-            setTimeout(() => {
-                AOS.refresh();
-            }, 100);
+            // Show main content by adding visible class
+            mainContent.classList.add('visible');
+            
+            // Re-enable AOS animations
+            AOS.init({ duration: 800, once: true, offset: 50, disable: false });
+            AOS.refresh();
             
             // Save consent
-            localStorage.setItem('consentGiven', 'true');
+            saveConsent(true);
         }
 
-        // Handle decline safely without stripping listeners
+        // Handle decline
         function declineConsent() {
+            // Show a message requiring acceptance
             const consentPopup = document.querySelector('#consentOverlay .consent-popup');
-            
-            // Use standard HTML assignment, but safely attach a fresh event handler right after
             consentPopup.innerHTML = `
                 <div class="consent-icon">
                     <i class="fas fa-exclamation-triangle"></i>
@@ -1258,9 +1283,9 @@
                     <button class="btn-accept" id="retryAcceptBtn">Accept Terms</button>
                 </div>
             `;
-            
-            // Bind the newly created button to the showContent driver
-            document.getElementById('retryAcceptBtn').addEventListener('click', showContent);
+            document.getElementById('retryAcceptBtn').addEventListener('click', () => {
+                showContent();
+            });
         }
 
         // Show Privacy Policy Modal
@@ -1281,7 +1306,7 @@
             document.getElementById('termsModal').classList.remove('active');
         }
 
-        // Set up event listeners systematically
+        // Set up event listeners
         function setupEventListeners() {
             // Accept and Decline buttons
             const acceptBtn = document.getElementById('acceptBtn');
@@ -1316,20 +1341,15 @@
             });
         }
 
-        // Initialize safely on page load
+        // Initialize on page load
         document.addEventListener('DOMContentLoaded', () => {
             setupEventListeners();
             
-            // If user has already consented, hide popup instantly
+            // If user has already consented, show content immediately
             if (hasUserConsented()) {
-                const consentOverlay = document.getElementById('consentOverlay');
-                consentOverlay.classList.add('hidden');
-                document.body.style.overflow = '';
-                AOS.refresh();
-            } else {
-                // Ensure page doesn't scroll behind the active popup layout
-                document.body.style.overflow = 'hidden';
+                showContent();
             }
+            // Otherwise, popup is already visible (no extra action needed)
         });
     </script>
 </body>
